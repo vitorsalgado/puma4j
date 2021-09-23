@@ -16,10 +16,7 @@ public class FixtureParameterResolverTest {
 
   @Test
   void should_return_helloWorldMessage(final @Fixture("fixtureTest.json") String message) {
-    assertEquals("{\n" +
-        "  \"id\": 123,\n" +
-        "  \"test\": \"hello world\"\n" +
-        "}", message);
+    assertEquals("{\n" + "  \"id\": 123,\n" + "  \"test\": \"hello world\"\n" + "}", message);
   }
 
   static class TestData {

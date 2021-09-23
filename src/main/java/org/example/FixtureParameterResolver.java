@@ -51,12 +51,10 @@ public class FixtureParameterResolver implements ParameterResolver {
     }
   }
 
-  private String readFromInputStream(final InputStream inputStream)
-      throws IOException {
+  private String readFromInputStream(final InputStream inputStream) throws IOException {
     final StringBuilder resultStringBuilder = new StringBuilder();
 
-    try (final BufferedReader br
-             = new BufferedReader(new InputStreamReader(inputStream))) {
+    try (final BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
       String line;
       while ((line = br.readLine()) != null) {
         resultStringBuilder.append(line).append("\n");
