@@ -1,7 +1,10 @@
 plugins {
   id 'idea'
   id 'java'
+  id 'checkstyle'
 }
+
+apply from: 'codequality.gradle'
 
 group 'org.example'
 version '1.0-SNAPSHOT'

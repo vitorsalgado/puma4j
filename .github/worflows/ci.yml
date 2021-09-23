@@ -21,8 +21,11 @@ jobs:
           distribution: 'adopt'
           cache: gradle
 
-      - name: Build with Gradle
+      - name: Build
         run: gradle build
 
+      - name: Lint
+        run: gradle lint
+
       - name: Tests
-        run: gradle check
+        run: gradle test

@@ -2,29 +2,34 @@ package org.example;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
 import org.junit.jupiter.api.extension.ParameterResolver;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-
+/**
+ * {@code FixtureParameterResolver} resolves test method parameters annotated with {@code Fixture}
+ * injecting values with the content of a file resource.
+ */
 public class FixtureParameterResolver implements ParameterResolver {
 
   public static final String BASE_PATH = "/fixtures/%s";
   private static final ObjectMapper objectMapper = new ObjectMapper();
 
   @Override
-  public boolean supportsParameter(final ParameterContext parameterContext, final ExtensionContext extensionContext)
+  public boolean supportsParameter(final ParameterContext parameterContext,
+      final ExtensionContext extensionContext)
       throws ParameterResolutionException {
     return parameterContext.getParameter().isAnnotationPresent(Fixture.class);
   }
 
   @Override
-  public Object resolveParameter(final ParameterContext parameterContext, final ExtensionContext extensionContext)
+  public Object resolveParameter(final ParameterContext parameterContext,
+      final ExtensionContext extensionContext)
       throws ParameterResolutionException {
     Fixture fixture = parameterContext.getParameter().getAnnotation(Fixture.class);
 

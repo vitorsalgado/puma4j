@@ -1,0 +1,22 @@
+def linters = "linters"
+def linterTasks = ['checkstyleMain', 'checkstyleTest']
+
+tasks.withType(Checkstyle) {
+  group linters
+
+  checkstyle.toolVersion = 9.0
+  checkstyle.ignoreFailures = false
+  checkstyle.maxWarnings = 0
+  checkstyle.sourceSets = []
+
+  reports {
+    xml.required = false
+    html.required = true
+  }
+}
+
+check.dependsOn(linterTasks, "test")
+
+task lint(dependsOn: linterTasks) {
+  group linters
+}

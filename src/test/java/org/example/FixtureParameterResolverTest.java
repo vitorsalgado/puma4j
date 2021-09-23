@@ -9,7 +9,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 public class FixtureParameterResolverTest {
 
   @Test
-  void test_fixture_annotation_when_fixtureTypeIsObject(final @Fixture("fixtureTest.json") TestData testData) {
+  void test_fixture_annotation_when_fixtureTypeIsObject(
+      final @Fixture("fixtureTest.json") TestData testData) {
     assertEquals(123, testData.getId());
     assertEquals("hello world", testData.getTest());
   }
@@ -20,6 +21,7 @@ public class FixtureParameterResolverTest {
   }
 
   static class TestData {
+
     private int id;
     private String test;
 
