@@ -23,3 +23,6 @@ jobs:
 
     - name: Build with Gradle
       run: gradle build
+
+    - name: Tests
+      run: gradle check
