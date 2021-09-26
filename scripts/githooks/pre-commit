@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+[ -n "$CI" ] && exit 0
+
+java -jar tools/google-java-format/google-java-format.jar --replace "$(git diff --name-only)"
+./gradlew lint
