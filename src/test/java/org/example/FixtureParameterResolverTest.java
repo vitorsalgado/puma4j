@@ -21,7 +21,6 @@ public class FixtureParameterResolverTest {
   }
 
   static class TestData {
-
     private int id;
     private String test;
 
@@ -30,8 +29,7 @@ public class FixtureParameterResolverTest {
       this.test = test;
     }
 
-    public TestData() {
-    }
+    public TestData() {}
 
     public int getId() {
       return id;

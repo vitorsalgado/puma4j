@@ -5,6 +5,7 @@ plugins {
 }
 
 apply from: 'codequality.gradle'
+apply from: 'setup.gradle'
 
 group 'org.example'
 version '1.0-SNAPSHOT'
@@ -29,34 +30,5 @@ test {
     showStackTraces true
     showStandardStreams true
     exceptionFormat 'full'
-  }
-}
-
-task setup {
-  doFirst { project.logger.info("Local Environment Setup") }
-
-  project.logger.info("Downloading Google Java Format tool ...")
-
-  def version = "1.11.0"
-  def dir = new File("$rootProject.rootDir/tools/google-java-format")
-  def destination = new File("$dir/google-java-format.jar")
-
-  dir.mkdirs()
-
-  new URL("https://github.com/google/google-java-format/releases/download/v$version/google-java-format-$version-all-deps.jar")
-      .withInputStream { i ->
-        destination.withOutputStream { it << i }
-      }
-
-  project.logger.info("Setup git hooks ...")
-
-  copy {
-    from("$rootProject.rootDir/scripts/githooks/commit-msg")
-    into("$rootProject.rootDir/.git/hooks")
-  }
-
-  copy {
-    from("$rootProject.rootDir/scripts/githooks/pre-commit")
-    into("$rootProject.rootDir/.git/hooks")
   }
 }
