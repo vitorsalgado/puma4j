@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-  implementation 'org.junit.jupiter:junit-jupiter-api:5.8.0'
+  implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
   implementation 'com.fasterxml.jackson.core:jackson-core:2.12.5'
   implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
 
