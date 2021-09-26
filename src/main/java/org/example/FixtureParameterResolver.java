@@ -21,15 +21,15 @@ public class FixtureParameterResolver implements ParameterResolver {
   private static final ObjectMapper objectMapper = new ObjectMapper();
 
   @Override
-  public boolean supportsParameter(final ParameterContext parameterContext,
-      final ExtensionContext extensionContext)
+  public boolean supportsParameter(
+      final ParameterContext parameterContext, final ExtensionContext extensionContext)
       throws ParameterResolutionException {
     return parameterContext.getParameter().isAnnotationPresent(Fixture.class);
   }
 
   @Override
-  public Object resolveParameter(final ParameterContext parameterContext,
-      final ExtensionContext extensionContext)
+  public Object resolveParameter(
+      final ParameterContext parameterContext, final ExtensionContext extensionContext)
       throws ParameterResolutionException {
     Fixture fixture = parameterContext.getParameter().getAnnotation(Fixture.class);
 

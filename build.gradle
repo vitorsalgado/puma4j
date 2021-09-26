@@ -5,6 +5,7 @@ plugins {
 }
 
 apply from: 'codequality.gradle'
+apply from: 'setup.gradle'
 
 group 'org.example'
 version '1.0-SNAPSHOT'

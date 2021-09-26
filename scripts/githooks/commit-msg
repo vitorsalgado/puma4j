@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+[ -n "$CI" ] && exit 0
+
+RED='\033[0;31m'
+
+conventional_commit_regex="^(build|chore|ci|docs|feat|fix|perf|refactor|test)(\([a-z \-]+\))?!?: .+$"
+commit_message=$(cat "$1")
+
+if [[ "$commit_message" =~ $conventional_commit_regex ]]; then
+  exit 0
+fi
+
+echo -e "${RED}The commit message does not meet the Conventional Commit standard"
+echo "Take a look on the following examples: "
+echo "  feat(core): add gson resource parser"
+echo "  build: add ci with github actions"
+echo "More details at: https://www.conventionalcommits.org/en/v1.0.0/#summary"
+exit 1

@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+[ -n "$CI" ] && exit 0
+
+echo "Formatting Staged Files ..."
+java -jar tools/google-java-format/google-java-format.jar --replace $(git diff --name-only --cached)
+git add $(git diff --name-only --cached)
+
+echo "Linting ..."
+./gradlew lint -q

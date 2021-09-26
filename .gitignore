@@ -46,7 +46,6 @@ hs_err_pid*
 /bin/
 gen/
 
-*.class
 *.classpath
 *.project
 *.settings
@@ -54,3 +53,9 @@ gen/
 # IDEs
 .vscode/
 .idea/
+
+# Dev
+.sdkmanrc
+
+# Project
+tools/google-java-format
