@@ -1,1 +1,5 @@
 rootProject.name = 'test-fixture-injector'
+
+include 'core-logic'
+include 'junit4-extension'
+include 'junit5-extension'
