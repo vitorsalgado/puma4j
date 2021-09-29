@@ -1,0 +1,32 @@
+// Global shared var
+// --
+ext {
+  versions = [:]
+  libs = [:]
+}
+
+def versions = [:]
+def libs = [:]
+
+// Lib Versions
+// --
+versions.junitJupiter = "5.8.1"
+versions.jackson = "2.12.5"
+versions.nullaway = "0.9.2"
+
+// Dependencies
+// --
+libs.junitJupiterApi = "org.junit.jupiter:junit-jupiter-api:${versions.junitJupiter}"
+libs.junitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine:${versions.junitJupiter}"
+libs.jacksonCore = "com.fasterxml.jackson.core:jackson-core:${versions.jackson}"
+libs.jacksonDatabind = "com.fasterxml.jackson.core:jackson-databind:${versions.jackson}"
+
+// Utils
+// --
+static def addRepos(final handler) {
+  handler.mavenCentral()
+}
+
+ext.versions = versions
+ext.libs = libs
+ext.addRepos = this.&addRepos

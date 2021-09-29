@@ -26,11 +26,13 @@ jobs:
       - name: Build
         run: gradle build
 
-      - name: Lint
-        run: gradle lint
-
       - name: Tests
-        run: gradle test
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          gradle check
+          gradle codeCoverageReport
+          bash <(curl -s https://codecov.io/bash)
 
   automerge:
     needs:

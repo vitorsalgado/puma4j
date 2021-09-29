@@ -1,5 +1,5 @@
 .gradle
-/build/
+build/
 
 # Ignore Gradle GUI config
 gradle-app.setting
@@ -49,6 +49,8 @@ gen/
 *.classpath
 *.project
 *.settings
+
+infer-out/
 
 # IDEs
 .vscode/
