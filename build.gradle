@@ -1,34 +1,99 @@
 plugins {
-  id 'idea'
-  id 'java'
-  id 'checkstyle'
+  id "idea"
+  id "jacoco"
+  id "com.github.spotbugs" version "5.0.0-beta.1" apply false
 }
 
-apply from: 'codequality.gradle'
-apply from: 'setup.gradle'
+apply from: "dependencies.gradle"
+apply from: "setup.gradle"
 
-group 'org.example'
-version '1.0-SNAPSHOT'
+group "org.example"
+version "1.0-SNAPSHOT"
 
-repositories {
-  mavenCentral()
-}
+project.ext.isCI = System.getenv("CI") == "true"
+project.ext.compilerOptions = [
+    sourceCompatibility: 11,
+    targetCompatibility: 11,
+]
 
-dependencies {
-  implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
-  implementation 'com.fasterxml.jackson.core:jackson-core:2.13.0'
-  implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
-
-  testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
-}
-
-test {
-  useJUnitPlatform()
-
-  testLogging {
-    events 'passed', 'skipped', 'failed'
-    showStackTraces true
-    showStandardStreams true
-    exceptionFormat 'full'
+allprojects {
+  repositories {
+    mavenCentral()
   }
+}
+
+subprojects {
+  apply plugin: "idea"
+  apply plugin: "java-library"
+  apply plugin: "jacoco"
+  apply plugin: "checkstyle"
+  apply plugin: "pmd"
+  apply plugin: "com.github.spotbugs"
+  apply from: rootProject.file("lint.gradle")
+
+  sourceCompatibility = JavaVersion.VERSION_11
+  targetCompatibility = JavaVersion.VERSION_11
+
+  tasks.withType(JavaCompile) { compileTask ->
+    options.compilerArgs += "-Xlint:-deprecation"
+    options.deprecation = true
+  }
+
+  test {
+    useJUnitPlatform()
+
+    testLogging {
+      maxParallelForks Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+      forkEvery 10
+      events "passed", "skipped", "failed"
+      showStackTraces true
+      exceptionFormat "full"
+    }
+  }
+
+  spotbugsMain {
+    reports {
+      html {
+        enabled = true
+        destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
+      }
+      xml.enabled = false
+    }
+  }
+
+  // Common dependencies shared by all modules
+  // --
+  dependencies {
+    testRuntimeOnly libs.junitJupiterEngine
+  }
+}
+
+task codeCoverageReport(type: JacocoReport) {
+  executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+
+  subprojects.each {
+    sourceSets it.sourceSets.main
+  }
+
+  reports {
+    xml.required.set project.isCI
+    xml.destination file("${buildDir}/reports/jacoco/report.xml")
+    html.required.set !project.isCI
+    csv.required.set false
+  }
+}
+
+codeCoverageReport.dependsOn {
+  subprojects*.test
+}
+
+idea {
+  project {
+    jdkName = project.compilerOptions.targetCompatibility
+    languageLevel = project.compilerOptions.sourceCompatibility
+  }
+}
+
+wrapper {
+  distributionType = Wrapper.DistributionType.ALL
 }
