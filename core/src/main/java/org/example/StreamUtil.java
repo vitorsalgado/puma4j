@@ -22,7 +22,7 @@ public final class StreamUtil {
   public static String readInputStream(final InputStream inputStream) throws IOException {
     try (final BufferedReader reader =
         new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-      return reader.lines().map(String::strip).collect(Collectors.joining(System.lineSeparator()));
+      return reader.lines().map(String::strip).collect(Collectors.joining());
     }
   }
 }

@@ -2,3 +2,4 @@ rootProject.name = 'test-fixture-injector'
 
 include 'core'
 include 'junit5-extension'
+include 'example'

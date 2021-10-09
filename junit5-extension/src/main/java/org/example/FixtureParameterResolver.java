@@ -2,12 +2,8 @@ package org.example;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.nio.charset.StandardCharsets;
-import java.util.stream.Collectors;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
 import org.junit.jupiter.api.extension.ParameterResolutionException;
@@ -37,7 +33,7 @@ public class FixtureParameterResolver implements ParameterResolver {
     final String data;
 
     try (InputStream inputStream = FixtureParameterResolver.class.getResourceAsStream(filePath)) {
-      data = readFromInputStream(inputStream);
+      data = StreamUtil.readInputStream(inputStream);
     } catch (final IOException ex) {
       throw new ParameterResolutionException(ex.getMessage(), ex);
     }
@@ -50,13 +46,6 @@ public class FixtureParameterResolver implements ParameterResolver {
       return OBJECT_MAPPER.readValue(data, parameterContext.getParameter().getType());
     } catch (JsonProcessingException e) {
       throw new ParameterResolutionException(e.getMessage(), e);
-    }
-  }
-
-  private String readFromInputStream(final InputStream inputStream) throws IOException {
-    try (final BufferedReader reader =
-        new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8))) {
-      return reader.lines().map(String::strip).collect(Collectors.joining());
     }
   }
 }
