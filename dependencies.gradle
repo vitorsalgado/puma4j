@@ -12,7 +12,6 @@ def libs = [:]
 // --
 versions.junitJupiter = "5.8.1"
 versions.jackson = "2.13.0"
-versions.nullaway = "0.9.2"
 
 // Dependencies
 // --
