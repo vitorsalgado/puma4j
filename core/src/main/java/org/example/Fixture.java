@@ -13,6 +13,8 @@ public @interface Fixture {
   /**
    * Filename of the resource that must be injected in the test. The value must be a relative path
    * with filename and extension.
+   *
+   * @return resource filename
    */
   String value();
 }

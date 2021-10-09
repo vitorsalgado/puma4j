@@ -1,0 +1,96 @@
+import java.text.SimpleDateFormat
+
+final Date buildTimeAndDate = new Date()
+
+ext {
+  buildDate = new SimpleDateFormat('yyyy-MM-dd').format(buildTimeAndDate)
+  buildTime = new SimpleDateFormat('HH:mm:ss.SSSZ').format(buildTimeAndDate)
+}
+
+def projectArtifactId = 'test-resource-injector'
+def url = "https://github.com/vitorsalgado/test-fixture-injector/blob/main/README.md"
+
+jar {
+  manifest {
+    attributes(
+        'Built-By': 'vitorsalgado & smunoz2',
+        'Created-By': System.properties['java.version'] + " (" + System.properties['java.vendor'] + " " + System.properties['java.vm.version'] + ")",
+        'Build-Date': project.buildDate,
+        'Build-Time': project.buildTime,
+        'Specification-Title': projectArtifactId,
+        'Specification-Version': project.version,
+        'Implementation-Title': projectArtifactId,
+        'Implementation-Version': project.version,
+    )
+  }
+}
+
+task sourcesJar(type: Jar) {
+  from sourceSets.main.allSource
+  archiveClassifier = 'sources'
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+  archiveClassifier = 'javadoc'
+  from javadoc.destinationDir
+}
+
+artifacts {
+  archives sourcesJar
+  archives javadocJar
+}
+
+tasks.withType(Sign) {
+  onlyIf { !version.endsWith("SNAPSHOT") }
+}
+
+signing {
+  sign publishing.publications
+}
+
+publishing {
+  publications {
+    testresourceinjector(MavenPublication) {
+      from components.java
+      pom.withXml {
+        def devs = [
+            'smunoz2'     : 'Sebastián Muñoz Eyquem',
+            'vitorsalgado': 'Vitor Hugo Salgado',
+        ]
+        def root = asNode()
+
+        root.appendNode('name', "${projectArtifactId}")
+        root.appendNode('packaging', 'jar')
+        root.appendNode('url', "${url}")
+        root.appendNode('description', project.description)
+
+        def license = root.appendNode('licenses').appendNode('license')
+        license.appendNode('name', 'MIT')
+        license.appendNode('url', 'https://github.com/vitorsalgado/test-fixture-injector/blob/main/LICENSE')
+        license.appendNode('distribution', 'repo')
+
+        root.appendNode('scm').appendNode('url', 'https://github.com/vitorsalgado/test-fixture-injector.git')
+
+        def developers = root.appendNode('developers')
+        devs.each {
+          def d = developers.appendNode('developer')
+          d.appendNode('id', it.key)
+          d.appendNode('name', it.value)
+        }
+      }
+      artifact sourcesJar
+      artifact javadocJar
+    }
+  }
+
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      url = "https://maven.pkg.github.com/vitorsalgado/test-fixture-injector"
+      credentials {
+        username = System.getenv("GITHUB_ACTOR")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
+  }
+}

@@ -1,42 +1,47 @@
 plugins {
   id "idea"
-  id "jacoco"
   id "com.github.spotbugs" version "5.0.0-beta.2" apply false
 }
 
 apply from: "dependencies.gradle"
 apply from: "setup.gradle"
 
-group "org.example"
-version "1.0-SNAPSHOT"
+ext {
+  isCI = System.getenv("CI") == "true"
 
-project.ext.isCI = System.getenv("CI") == "true"
-project.ext.compilerOptions = [
-    sourceCompatibility: 11,
-    targetCompatibility: 11,
-]
+  publishableProjects = subprojects.findAll {
+    p -> p.name != "example" || !p.name.endsWith("-bom")
+  }
+}
 
 allprojects {
+  apply plugin: "jacoco"
+
+  group "org.example"
+  version "1.0-SNAPSHOT"
+  description ""
+
   repositories {
     mavenCentral()
   }
 }
 
 subprojects {
-  apply plugin: "idea"
-  apply plugin: "java-library"
-  apply plugin: "jacoco"
+  apply plugin: "java"
   apply plugin: "checkstyle"
   apply plugin: "pmd"
   apply plugin: "com.github.spotbugs"
-  apply from: rootProject.file("lint.gradle")
+  apply from: "${rootDir}/lint.gradle"
 
   sourceCompatibility = JavaVersion.VERSION_11
   targetCompatibility = JavaVersion.VERSION_11
 
   tasks.withType(JavaCompile) { compileTask ->
-    options.compilerArgs += "-Xlint:-deprecation"
+    sourceCompatibility = "11"
+    targetCompatibility = "11"
+    options.encoding = 'UTF-8'
     options.deprecation = true
+    options.compilerArgs += ["-Xlint:-deprecation", "-Xlint:unchecked", "-parameters"]
   }
 
   test {
@@ -69,6 +74,13 @@ subprojects {
   }
 }
 
+configure(publishableProjects) {
+  apply plugin: "java-library"
+  apply plugin: "maven-publish"
+  apply plugin: "signing"
+  apply from: "${rootDir}/publishing.gradle"
+}
+
 task codeCoverageReport(type: JacocoReport) {
   executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
@@ -77,9 +89,9 @@ task codeCoverageReport(type: JacocoReport) {
   }
 
   reports {
-    xml.required.set project.isCI
+    xml.required.set isCI
     xml.destination file("${buildDir}/reports/jacoco/report.xml")
-    html.required.set !project.isCI
+    html.required.set isCI
     csv.required.set false
   }
 }
@@ -90,8 +102,8 @@ codeCoverageReport.dependsOn {
 
 idea {
   project {
-    jdkName = project.compilerOptions.targetCompatibility
-    languageLevel = project.compilerOptions.sourceCompatibility
+    jdkName = 11
+    languageLevel = 11
   }
 }
 
