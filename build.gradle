@@ -10,7 +10,7 @@ ext {
   isCI = System.getenv("CI") == "true"
 
   publishableProjects = subprojects.findAll {
-    p -> p.name != "example" || !p.name.endsWith("-bom")
+    p -> !p.name.contains( "example") && !p.name.endsWith("-bom")
   }
 }
 
