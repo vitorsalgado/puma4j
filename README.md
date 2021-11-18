@@ -22,3 +22,24 @@
 
 Puma4j provides a convenient and much easier way to load and parse file resources in your tests
 using just a couple of **@annotations** :).
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table border="0">
+  <tr>
+    <td style='border-style: hidden;' align="center"><a href="https://github.com/smunoz2"><img src="https://avatars.githubusercontent.com/u/61516534?v=4" width="50px;" alt=""/><br /><sub><b>Sebastián Muñoz Eyquem</b></sub></a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors)
+specification. Contributions of any kind welcome!
