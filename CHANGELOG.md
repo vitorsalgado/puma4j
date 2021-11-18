@@ -15,5 +15,6 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Bug Fixes
 
+* add missing triggers to ci pipeline ([7a8cfe5](https://github.com/vitorsalgado/puma4j/commit/7a8cfe5f49cb533af86da378e978ef4f63e57f4d))
 * codeql build ([bcd3836](https://github.com/vitorsalgado/puma4j/commit/bcd3836ae408c7c2158e45dbc4d4a1b4367453ab))
 * remove example from core projects list ([e5f3d01](https://github.com/vitorsalgado/puma4j/commit/e5f3d01cbf711f3d4be65e68329efc114e0220fb))
