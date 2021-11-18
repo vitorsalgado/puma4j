@@ -1,3 +1,23 @@
 {
-  "imageSize": 50
+  "imageSize": 50,
+  "projectName": "puma4j",
+  "projectOwner": "vitorsalgado",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true,
+  "contributors": [
+    {
+      "login": "smunoz2",
+      "name": "Sebastián Muñoz Eyquem",
+      "avatar_url": "https://avatars.githubusercontent.com/u/61516534?v=4",
+      "profile": "https://github.com/smunoz2",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "files": [
+    "README.md"
+  ],
+  "contributorsPerLine": 7
 }
