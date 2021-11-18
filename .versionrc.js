@@ -3,8 +3,8 @@
 module.exports = {
   bumpFiles: [
     {
-      filename: 'VERSION',
-      updater: 'plain-text'
+      filename: 'VERSION.txt',
+      updater: require('./scripts/bumpVersion')
     }
   ]
 }

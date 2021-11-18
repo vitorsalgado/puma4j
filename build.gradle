@@ -3,7 +3,7 @@ plugins {
   id "com.github.spotbugs" version "5.0.0-beta.8" apply false
 }
 
-def Version = file("$rootDir/VERSION").text.trim()
+def Version = file("$rootDir/VERSION.txt").text.trim()
 
 apply from: "dependencies.gradle"
 apply from: "setup.gradle"
