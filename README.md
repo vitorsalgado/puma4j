@@ -1,7 +1,7 @@
 <h1 align="center">Puma4j</h1>
 
 <p align="center">
-  <img src="docs/assets/logo.png" alt="Repository Logo" width='85px' height='85px' />
+  <img src="docs/assets/logo.png" alt="Repository Logo" width='256px' height='256px' />
   <br />
   <i>Easy and convenient way to load file resources into your <strong>tests</strong> using only <strong>annotations</strong>.</i>
 </p>
