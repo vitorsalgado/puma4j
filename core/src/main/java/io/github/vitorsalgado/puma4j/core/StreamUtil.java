@@ -1,4 +1,4 @@
-package io.github.vitorsalgado.resources.injector.junit5;
+package io.github.vitorsalgado.puma4j.core;
 
 import java.io.BufferedReader;
 import java.io.IOException;

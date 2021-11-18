@@ -1,4 +1,11 @@
-<h1 align="center">Test Fixture Injector</h1>
+<h1 align="center">Puma4j</h1>
+
+<p align="center">
+  <img src="docs/assets/logo.png" alt="Repository Logo" width='85px' height='85px' />
+  <br />
+  <i>Easy and convenient way to load file resources into your <strong>tests</strong> using only <strong>annotations</strong>.</i>
+</p>
+
 <p align="center">
   <a href="https://github.com/vitorsalgado/test-fixture-injector/actions/workflows/ci.yml">
     <img src="https://github.com/vitorsalgado/test-fixture-injector/actions/workflows/ci.yml/badge.svg" alt="GitHub Action Status" />
@@ -10,3 +17,8 @@
     <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits"/>
   </a>
 </p>
+
+## Overview
+
+Puma4j provides a convenient and much easier way to load and parse file resources in your tests
+using just a couple of **@annotations** :).

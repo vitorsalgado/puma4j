@@ -1,7 +1,8 @@
-package io.github.vitorsalgado.resources.injector.junit5;
+package io.github.vitorsalgado.puma4j.junit5;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import io.github.vitorsalgado.puma4j.core.Res;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 

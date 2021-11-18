@@ -1,7 +1,9 @@
-package io.github.vitorsalgado.resources.injector.junit5;
+package io.github.vitorsalgado.puma4j.junit5;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import io.github.vitorsalgado.puma4j.core.Res;
+import io.github.vitorsalgado.puma4j.core.StreamUtil;
 import java.io.IOException;
 import java.io.InputStream;
 import org.junit.jupiter.api.extension.ExtensionContext;

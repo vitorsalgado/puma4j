@@ -17,9 +17,9 @@ ext {
 allprojects {
   apply plugin: "jacoco"
 
-  group "org.example"
+  group "io.github.vitorsalgado.puma4j"
   version "0.0.1-SNAPSHOT"
-  description ""
+  description "Easy and convenient way to load file resources into your tests using only annotations."
 
   repositories {
     mavenCentral()

@@ -2,8 +2,8 @@ package org.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import io.github.vitorsalgado.resources.injector.junit5.Res;
-import io.github.vitorsalgado.resources.injector.junit5.TestResourceParameterResolver;
+import io.github.vitorsalgado.puma4j.core.Res;
+import io.github.vitorsalgado.puma4j.junit5.TestResourceParameterResolver;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
