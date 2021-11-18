@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /** Mark a method parameter that must be injected with a resource file content. */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.PARAMETER)
-public @interface Fixture {
+public @interface Res {
 
   /**
    * Filename of the resource that must be injected in the test. The value must be a relative path

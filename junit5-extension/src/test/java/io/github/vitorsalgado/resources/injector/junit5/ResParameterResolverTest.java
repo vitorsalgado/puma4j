@@ -5,19 +5,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
-@ExtendWith(FixtureParameterResolver.class)
-class FixtureParameterResolverTest {
+@ExtendWith(TestResourceParameterResolver.class)
+class ResParameterResolverTest {
 
   @Test
   void itShouldInjectAnObjectInstanceWhenParameterTypeIsObject(
-      final @Fixture("fixtureTest.json") TestData testData) {
+      final @Res("fixtureTest.json") TestData testData) {
     assertEquals(123, testData.getId());
     assertEquals("hello world", testData.getTest());
   }
 
   @Test
   void itShouldInjectTheStringContentFromResourceFile(
-      final @Fixture("fixtureTest.json") String message) {
+      final @Res("fixtureTest.json") String message) {
     assertEquals("{\"id\": 123,\"test\": \"hello world\"}", message);
   }
 

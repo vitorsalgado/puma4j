@@ -13,7 +13,7 @@ import org.junit.jupiter.api.extension.ParameterResolver;
  * {@code FixtureParameterResolver} resolves test method parameters annotated with {@code Fixture}
  * injecting values with the content of a file resource.
  */
-public class FixtureParameterResolver implements ParameterResolver {
+public class TestResourceParameterResolver implements ParameterResolver {
 
   public static final String BASE_PATH = "/fixtures/%s";
   private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
@@ -21,18 +21,19 @@ public class FixtureParameterResolver implements ParameterResolver {
   @Override
   public boolean supportsParameter(
       final ParameterContext parameterContext, final ExtensionContext extensionContext) {
-    return parameterContext.getParameter().isAnnotationPresent(Fixture.class);
+    return parameterContext.getParameter().isAnnotationPresent(Res.class);
   }
 
   @Override
   public Object resolveParameter(
       final ParameterContext parameterContext, final ExtensionContext extensionContext) {
-    final Fixture fixture = parameterContext.getParameter().getAnnotation(Fixture.class);
-    final String fileName = fixture.value();
+    final Res res = parameterContext.getParameter().getAnnotation(Res.class);
+    final String fileName = res.value();
     final String filePath = String.format(BASE_PATH, fileName);
     final String data;
 
-    try (InputStream inputStream = FixtureParameterResolver.class.getResourceAsStream(filePath)) {
+    try (InputStream inputStream =
+        TestResourceParameterResolver.class.getResourceAsStream(filePath)) {
       data = StreamUtil.readInputStream(inputStream);
     } catch (final IOException ex) {
       throw new ParameterResolutionException(ex.getMessage(), ex);
