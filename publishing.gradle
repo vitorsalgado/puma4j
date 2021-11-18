@@ -8,7 +8,7 @@ ext {
 }
 
 def projectArtifactId = 'test-resource-injector'
-def url = "https://github.com/vitorsalgado/test-fixture-injector/blob/main/README.md"
+def url = "https://github.com/vitorsalgado/puma4j/blob/main/README.md"
 
 jar {
   manifest {
@@ -66,10 +66,10 @@ publishing {
 
         def license = root.appendNode('licenses').appendNode('license')
         license.appendNode('name', 'MIT')
-        license.appendNode('url', 'https://github.com/vitorsalgado/test-fixture-injector/blob/main/LICENSE')
+        license.appendNode('url', 'https://github.com/vitorsalgado/puma4j/blob/main/LICENSE')
         license.appendNode('distribution', 'repo')
 
-        root.appendNode('scm').appendNode('url', 'https://github.com/vitorsalgado/test-fixture-injector.git')
+        root.appendNode('scm').appendNode('url', 'https://github.com/vitorsalgado/puma4j.git')
 
         def developers = root.appendNode('developers')
         devs.each {
@@ -86,7 +86,7 @@ publishing {
   repositories {
     maven {
       name = "GitHubPackages"
-      url = "https://maven.pkg.github.com/vitorsalgado/test-fixture-injector"
+      url = "https://maven.pkg.github.com/vitorsalgado/puma4j"
       credentials {
         username = System.getenv("GITHUB_ACTOR")
         password = System.getenv("GITHUB_TOKEN")

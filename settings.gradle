@@ -1,4 +1,4 @@
-rootProject.name = 'test-fixture-injector'
+rootProject.name = 'puma4j'
 
 include 'core'
 include 'junit5-extension'
