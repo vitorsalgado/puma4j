@@ -1,4 +1,4 @@
-package org.example;
+package io.github.vitorsalgado.resources.injector.junit5;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

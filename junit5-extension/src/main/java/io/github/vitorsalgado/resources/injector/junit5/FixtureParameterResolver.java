@@ -1,4 +1,4 @@
-package org.example;
+package io.github.vitorsalgado.resources.injector.junit5;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;

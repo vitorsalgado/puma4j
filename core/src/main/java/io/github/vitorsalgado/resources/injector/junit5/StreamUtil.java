@@ -1,4 +1,4 @@
-package org.example;
+package io.github.vitorsalgado.resources.injector.junit5;
 
 import java.io.BufferedReader;
 import java.io.IOException;

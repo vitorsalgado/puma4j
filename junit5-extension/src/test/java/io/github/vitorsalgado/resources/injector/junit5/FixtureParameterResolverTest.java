@@ -1,4 +1,4 @@
-package org.example;
+package io.github.vitorsalgado.resources.injector.junit5;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

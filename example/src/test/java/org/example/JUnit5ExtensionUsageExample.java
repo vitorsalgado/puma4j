@@ -1,9 +1,9 @@
-package org.example.example;
+package org.example;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.example.Fixture;
-import org.example.FixtureParameterResolver;
+import io.github.vitorsalgado.resources.injector.junit5.Fixture;
+import io.github.vitorsalgado.resources.injector.junit5.FixtureParameterResolver;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
