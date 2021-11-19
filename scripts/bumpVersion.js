@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports.readVersion = function (contents) {
-  return contents;
+  return contents
 }
 
 module.exports.writeVersion = function (contents, version) {

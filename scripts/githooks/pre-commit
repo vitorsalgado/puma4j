@@ -3,8 +3,13 @@
 [ -n "$CI" ] && exit 0
 
 echo "Formatting Staged Files ..."
-java -jar tools/google-java-format/google-java-format.jar --replace $(git diff --name-only --cached)
-git add $(git diff --name-only --cached)
+
+diff=$(git diff --name-only --cached)
+
+[[ -z "$var" ]] && exit 0
+
+java -jar tools/google-java-format/google-java-format.jar --replace "$diff"
+git add "$diff"
 
 echo "Linting ..."
 ./gradlew lint -q
