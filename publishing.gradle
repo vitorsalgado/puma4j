@@ -49,9 +49,20 @@ signing {
 }
 
 publishing {
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      url = uri("https://maven.pkg.github.com/vitorsalgado/puma4j")
+      credentials {
+        username = System.getenv("GITHUB_ACTOR")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
+  }
+  
   publications {
     puma4j(MavenPublication) {
-      from components.java
+      from(components.java)
       pom.withXml {
         def devs = [
             'smunoz2'     : 'Sebastián Muñoz Eyquem',
@@ -80,17 +91,6 @@ publishing {
       }
       artifact sourcesJar
       artifact javadocJar
-    }
-  }
-
-  repositories {
-    maven {
-      name = "GitHubPackages"
-      url = "https://maven.pkg.github.com/vitorsalgado/puma4j"
-      credentials {
-        username = System.getenv("GITHUB_ACTOR")
-        password = System.getenv("GITHUB_TOKEN")
-      }
     }
   }
 }
