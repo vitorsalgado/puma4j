@@ -1,0 +1,4 @@
+ext.moduleName = 'io.github.vitorsalgado.puma4j.core'
+
+dependencies {
+}

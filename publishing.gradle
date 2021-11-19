@@ -7,7 +7,7 @@ ext {
   buildTime = new SimpleDateFormat('HH:mm:ss.SSSZ').format(buildTimeAndDate)
 }
 
-def projectArtifactId = 'test-resource-injector'
+def projectArtifactId = 'puma4j'
 def url = "https://github.com/vitorsalgado/puma4j/blob/main/README.md"
 
 jar {
@@ -50,7 +50,7 @@ signing {
 
 publishing {
   publications {
-    testresourceinjector(MavenPublication) {
+    puma4j(MavenPublication) {
       from components.java
       pom.withXml {
         def devs = [

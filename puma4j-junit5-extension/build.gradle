@@ -1,5 +1,7 @@
-dependencies{
-  api project(":core")
+ext.moduleName = 'io.github.vitorsalgado.puma4j.junit5extension'
+
+dependencies {
+  api project(":puma4j-core")
 
   implementation libs.junitJupiterApi
   implementation libs.jacksonCore

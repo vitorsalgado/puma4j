@@ -81,6 +81,15 @@ configure(publishableProjects) {
   apply plugin: "maven-publish"
   apply plugin: "signing"
   apply from: "${rootDir}/publishing.gradle"
+
+  afterEvaluate {
+    jar {
+      inputs.property('moduleName', moduleName)
+      manifest.attributes(
+          'Automatic-Module-Name': moduleName
+      )
+    }
+  }
 }
 
 task codeCoverageReport(type: JacocoReport) {
