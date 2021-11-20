@@ -79,8 +79,6 @@ subprojects {
 }
 
 configure(publishableProjects) {
-  apply plugin: "maven-publish"
-  apply plugin: "signing"
   apply from: "${rootDir}/publishing.gradle"
 
   afterEvaluate {

@@ -1,3 +1,6 @@
+apply plugin: "maven-publish"
+apply plugin: "signing"
+
 import java.text.SimpleDateFormat
 
 final Date buildTimeAndDate = new Date()
@@ -8,7 +11,7 @@ ext {
 }
 
 def projectArtifactId = 'puma4j'
-def url = "https://github.com/vitorsalgado/puma4j/blob/main/README.md"
+def projectUrl = "https://github.com/vitorsalgado/puma4j/blob/main/README.md"
 
 jar {
   manifest {
@@ -73,7 +76,7 @@ publishing {
 
         root.appendNode('name', "${projectArtifactId}")
         root.appendNode('packaging', 'jar')
-        root.appendNode('url', "${url}")
+        root.appendNode('url', "${projectUrl}")
         root.appendNode('description', project.description)
 
         def license = root.appendNode('licenses').appendNode('license')
