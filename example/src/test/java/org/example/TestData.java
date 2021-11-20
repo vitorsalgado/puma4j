@@ -1,15 +1,17 @@
 package org.example;
 
 public class TestData {
+
   private int id;
   private String test;
 
-  public TestData(int id, String test) {
+  public TestData(final int id, final String test) {
     this.id = id;
     this.test = test;
   }
 
-  public TestData() {}
+  public TestData() {
+  }
 
   public int getId() {
     return id;

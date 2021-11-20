@@ -10,7 +10,7 @@ tasks.withType(Checkstyle) {
   checkstyle.sourceSets = []
 
   reports {
-    xml.required = false
+    xml.required = isCI
     html.required = true
   }
 }
@@ -27,7 +27,7 @@ tasks.withType(Pmd) {
   }
 
   reports {
-    xml.required = false
+    xml.required = isCI
     html.required = true
   }
 }

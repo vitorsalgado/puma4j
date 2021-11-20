@@ -1,9 +1,10 @@
-package org.example;
+package org.example.juni5;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import io.github.vitorsalgado.puma4j.core.Res;
 import io.github.vitorsalgado.puma4j.junit5.TestResourceParameterResolver;
+import org.example.TestData;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 

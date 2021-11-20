@@ -1,7 +1,7 @@
 <h1 align="center">Puma4j</h1>
 
 <p align="center">
-  <img src="docs/assets/logo.png" alt="Repository Logo" width='256px' height='256px' />
+  <img src="docs/assets/logo.png" alt="Repository Logo" width='200px' height='200px' />
   <br />
   <i>Easy and convenient way to load file resources into your <strong>tests</strong> using only <strong>annotations</strong>.</i>
 </p>
@@ -21,7 +21,49 @@
 ## Overview
 
 Puma4j provides a convenient and much easier way to load and parse file resources in your tests
-using just a couple of **@annotations** :).
+using just a couple of **@annotations** :)
+
+## Download
+
+Using Gradle:
+
+```groovy
+implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:<VERSION>"
+```
+
+or Maven:
+
+```xml
+
+<dependency>
+  <groupId>io.github.vitorsalgado.puma4j</groupId>
+  <artifactId>puma4j-junit5-extension</artifactId>
+  <version>VERSION</version>
+</dependency>
+```
+
+## Usage
+
+```java
+
+@ExtendWith(TestResourceParameterResolver.class)
+public class JUnit5ExtensionUsageExample {
+
+  @Test
+  void itShouldInjectAnObjectInstanceWhenParameterTypeIsObject(
+      final @Res("fixtureTest.json") TestData testData) {
+    assertEquals(123, testData.getId());
+    assertEquals("hello world", testData.getTest());
+  }
+}
+
+```
+
+---
+
+## Contributing
+
+See [CONTRIBUTING](CONTRIBUTING.md) for more details.
 
 ## Contributors
 
@@ -43,3 +85,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 This project follows the [all-contributors](https://github.com/all-contributors/all-contributors)
 specification. Contributions of any kind welcome!
+
+## License
+
+This project is [MIT Licensed](LICENSE).

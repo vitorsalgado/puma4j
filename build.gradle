@@ -1,6 +1,7 @@
 plugins {
   id "idea"
   id "com.github.spotbugs" version "5.0.0-beta.8" apply false
+  id "org.sonarqube" version "3.3"
 }
 
 def Version = file("$rootDir/VERSION.txt").text.trim()
@@ -11,7 +12,7 @@ apply from: "setup.gradle"
 ext {
   isCI = System.getenv("CI") == "true"
 
-  publishableProjects = subprojects.findAll {
+  coreProjects = subprojects.findAll {
     p -> !p.name.contains("example") && !p.name.endsWith("-bom")
   }
 }
@@ -77,7 +78,7 @@ subprojects {
   }
 }
 
-configure(publishableProjects) {
+configure(coreProjects) {
   apply from: "${rootDir}/publishing.gradle"
 
   afterEvaluate {
@@ -90,23 +91,33 @@ configure(publishableProjects) {
   }
 }
 
-task codeCoverageReport(type: JacocoReport) {
+def allTestCoverageFile = "${rootProject.projectDir}/build/reports/jacoco/report.xml"
+
+task jacocoMergeTest(type: JacocoMerge) {
+  destinationFile = file(allTestCoverageFile)
+  executionData = project.fileTree(dir: '.', include: '**/build/jacoco/test.exec')
+}
+
+task jacocoRootTestReport(type: JacocoReport) {
+  coreProjects.each { dependsOn("${it.name}:test") }
+  coreProjects.each { dependsOn("${it.name}:jacocoTestReport") }
+
   executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
 
   subprojects.each {
     sourceSets it.sourceSets.main
   }
 
+  onlyIf {
+    true
+  }
+
   reports {
     xml.required.set isCI
-    xml.destination file("${buildDir}/reports/jacoco/report.xml")
-    html.required.set isCI
+    xml.destination file(allTestCoverageFile)
+    html.required.set false
     csv.required.set false
   }
-}
-
-codeCoverageReport.dependsOn {
-  subprojects*.test
 }
 
 idea {
@@ -116,6 +127,26 @@ idea {
   }
 }
 
+sonarqube {
+  properties {
+    property "sonar.language", "java"
+    property "sonar.projectKey", "vitorsalgado_puma4j"
+    property "sonar.projectName", "puma4j"
+    property "sonar.organization", "vitorsalgado"
+    property "sonar.project.monorepo.enabled", true
+    property "sonar.host.url", "https://sonarcloud.io"
+    property "sonar.links.scm", "https://github.com/vitorsalgado/puma4j"
+    property "sonar.links.issue", "https://github.com/vitorsalgado/puma4j/issues"
+    property "sonar.links.homepage", "https://github.com/vitorsalgado/puma4j"
+    property "sonar.apex.pmd.reportPath", "${rootProject.projectDir}/build/reports/pmd/main.xml"
+    property "sonar.coverage.jacoco.xmlReportPaths", "${allTestCoverageFile}"
+  }
+}
+
 wrapper {
   distributionType = Wrapper.DistributionType.ALL
+}
+
+subprojects {
+  it.tasks.check.dependsOn rootProject.tasks.jacocoRootTestReport
 }
