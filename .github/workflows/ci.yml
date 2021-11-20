@@ -18,7 +18,11 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    name: Running on ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-latest, windows-latest ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
