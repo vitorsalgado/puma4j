@@ -38,10 +38,14 @@ jobs:
         run: gradle build
 
       - name: Tests
+        run: |
+          gradle check
+
+      - name: Coverage
+        if: matrix.os == 'ubuntu-latest'
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
-          gradle check
           gradle jacocoRootTestReport
           bash <(curl -s https://codecov.io/bash)
 
