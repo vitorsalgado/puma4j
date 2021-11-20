@@ -50,6 +50,7 @@ signing {
 
 publishing {
   repositories {
+    mavenLocal()
     maven {
       name = "GitHubPackages"
       url = uri("https://maven.pkg.github.com/vitorsalgado/puma4j")
@@ -59,7 +60,7 @@ publishing {
       }
     }
   }
-  
+
   publications {
     puma4j(MavenPublication) {
       from(components.java)

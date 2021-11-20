@@ -1,6 +1,7 @@
 plugins {
   id "idea"
   id "com.github.spotbugs" version "5.0.0-beta.8" apply false
+  id "maven-publish"
 }
 
 def Version = file("$rootDir/VERSION.txt").text.trim()
@@ -30,6 +31,7 @@ allprojects {
 
 subprojects {
   apply plugin: "java"
+  apply plugin: "java-library"
   apply plugin: "checkstyle"
   apply plugin: "pmd"
   apply plugin: "com.github.spotbugs"
@@ -77,7 +79,6 @@ subprojects {
 }
 
 configure(publishableProjects) {
-  apply plugin: "java-library"
   apply plugin: "maven-publish"
   apply plugin: "signing"
   apply from: "${rootDir}/publishing.gradle"

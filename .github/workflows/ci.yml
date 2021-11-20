@@ -1,4 +1,4 @@
-name: ci
+name: CI
 
 on:
   push:
@@ -54,6 +54,9 @@ jobs:
     needs:
       - test
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -66,6 +69,6 @@ jobs:
           cache: gradle
 
       - name: Publish Package
-        run: gradle publish --stacktrace
+        run: gradle publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
