@@ -1,6 +1,6 @@
 plugins {
   id "idea"
-  id "com.github.spotbugs" version "5.0.0-beta.8" apply false
+  id "com.github.spotbugs" version "5.0.0-rc.1" apply false
   id "org.sonarqube" version "3.3"
 }
 
