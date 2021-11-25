@@ -1,6 +1,5 @@
 plugins {
   id "idea"
-  id "com.github.spotbugs" version "5.0.0-rc.1" apply false
   id "org.sonarqube" version "3.3"
 }
 
@@ -34,7 +33,6 @@ subprojects {
   apply plugin: "java-library"
   apply plugin: "checkstyle"
   apply plugin: "pmd"
-  apply plugin: "com.github.spotbugs"
   apply from: "${rootDir}/lint.gradle"
 
   sourceCompatibility = JavaVersion.VERSION_11
@@ -52,21 +50,9 @@ subprojects {
     useJUnitPlatform()
 
     testLogging {
-      maxParallelForks Runtime.runtime.availableProcessors().intdiv(2) ?: 1
-      forkEvery 10
       events "passed", "skipped", "failed"
       showStackTraces true
       exceptionFormat "full"
-    }
-  }
-
-  spotbugsMain {
-    reports {
-      html {
-        enabled = true
-        destination = file("$buildDir/reports/spotbugs/main/spotbugs.html")
-      }
-      xml.enabled = false
     }
   }
 
@@ -115,7 +101,7 @@ task jacocoRootTestReport(type: JacocoReport) {
   reports {
     xml.required.set isCI
     xml.destination file(allTestCoverageFile)
-    html.required.set false
+    html.required.set true
     csv.required.set false
   }
 }
@@ -133,7 +119,6 @@ sonarqube {
     property "sonar.projectKey", "vitorsalgado_puma4j"
     property "sonar.projectName", "puma4j"
     property "sonar.organization", "vitorsalgado"
-    property "sonar.project.monorepo.enabled", true
     property "sonar.host.url", "https://sonarcloud.io"
     property "sonar.links.scm", "https://github.com/vitorsalgado/puma4j"
     property "sonar.links.issue", "https://github.com/vitorsalgado/puma4j/issues"

@@ -21,7 +21,7 @@ tasks.withType(Pmd) {
   pmd {
     consoleOutput = true
     toolVersion = "6.39.0"
-    ignoreFailures false
+    ignoreFailures true
     ruleSetConfig = resources.text.fromFile("$rootProject.rootDir/config/pmd/ruleset.xml")
     ruleSets = []
   }

@@ -12,6 +12,7 @@ def libs = [:]
 // --
 versions.junitJupiter = "5.8.1"
 versions.jackson = "2.13.0"
+versions.gson = "2.8.9"
 
 // Dependencies
 // --
@@ -19,6 +20,11 @@ libs.junitJupiterApi = "org.junit.jupiter:junit-jupiter-api:${versions.junitJupi
 libs.junitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine:${versions.junitJupiter}"
 libs.jacksonCore = "com.fasterxml.jackson.core:jackson-core:${versions.jackson}"
 libs.jacksonDatabind = "com.fasterxml.jackson.core:jackson-databind:${versions.jackson}"
+libs.jacksonParameterNames = "com.fasterxml.jackson.module:jackson-module-parameter-names:${versions.jackson}"
+libs.jacksonJsr310 = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${versions.jackson}"
+libs.jacksonJdk8 = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${versions.jackson}"
+libs.jacksonYaml = "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${versions.jackson}"
+libs.gson = "com.google.code.gson:gson:${versions.gson}"
 
 // Utils
 // --

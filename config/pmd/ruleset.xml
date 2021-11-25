@@ -14,12 +14,24 @@
     <exclude name="AtLeastOneConstructor"/>
     <exclude name="OnlyOneReturn"/>
     <exclude name="CommentDefaultAccessModifier"/>
+    <exclude name="ClassNamingConventions"/>
+    <exclude name="ShortClassName"/>
+    <exclude name="LongVariable"/>
+    <exclude name="PrematureDeclaration"/>
   </rule>
   <rule ref="category/java/design.xml">
     <exclude name="LawOfDemeter"/>
     <exclude name="LoosePackageCoupling"/>
+    <exclude name="DataClass"/>
+    <exclude name="CyclomaticComplexity"/>
+    <exclude name="CognitiveComplexity"/>
+    <exclude name="AvoidCatchingGenericException"/>
   </rule>
-  <rule ref="category/java/multithreading.xml"/>
-  <rule ref="category/java/performance.xml"/>
+  <rule ref="category/java/multithreading.xml">
+    <exclude name="UseConcurrentHashMap"/>
+  </rule>
+  <rule ref="category/java/performance.xml">
+    <exclude name="InsufficientStringBufferDeclaration"/>
+  </rule>
   <rule ref="category/java/security.xml"/>
 </ruleset>
