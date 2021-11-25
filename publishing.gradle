@@ -1,6 +1,3 @@
-apply plugin: "maven-publish"
-apply plugin: "signing"
-
 import java.text.SimpleDateFormat
 
 final Date buildTimeAndDate = new Date()
@@ -52,18 +49,6 @@ signing {
 }
 
 publishing {
-  repositories {
-    mavenLocal()
-    maven {
-      name = "GitHubPackages"
-      url = "https://maven.pkg.github.com/vitorsalgado/puma4j"
-      credentials {
-        username = System.getenv("GITHUB_ACTOR")
-        password = System.getenv("GITHUB_TOKEN")
-      }
-    }
-  }
-
   publications {
     puma4j(MavenPublication) {
       from components.java
