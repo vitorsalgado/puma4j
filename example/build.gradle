@@ -1,3 +1,6 @@
 dependencies {
   testImplementation project(":puma4j-junit5-extension")
+  
+  testImplementation libs.jacksonCore
+  testImplementation libs.jacksonDatabind
 }
