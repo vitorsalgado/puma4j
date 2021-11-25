@@ -59,9 +59,13 @@ class DefaultResourceProvider implements Provider {
       }
     }
 
+    final String path = Paths.get(args.getContext().getBasePath(), filename)
+        .normalize()
+        .toString();
+
     try (final InputStream input =
         args.getTestClass()
-            .getResourceAsStream(Paths.get(args.getContext().getBasePath(), filename).toString())) {
+            .getResourceAsStream(path)) {
 
       return marshaller.unmarshal(
           new Marshaller.Args(
