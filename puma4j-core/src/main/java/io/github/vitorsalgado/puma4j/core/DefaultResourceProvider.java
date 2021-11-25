@@ -8,6 +8,7 @@ import static java.util.Objects.requireNonNull;
 import io.github.vitorsalgado.puma4j.annotations.Res;
 import io.github.vitorsalgado.puma4j.annotations.Use;
 import java.io.InputStream;
+import java.net.URL;
 import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.Properties;
@@ -59,13 +60,15 @@ class DefaultResourceProvider implements Provider {
       }
     }
 
-    final String path = Paths.get(args.getContext().getBasePath(), filename)
-        .normalize()
-        .toString();
+    final String path = Paths.get(args.getContext().getBasePath(), filename).normalize().toString();
+    final URL resource = args.getTestClass().getResource(path);
 
-    try (final InputStream input =
-        args.getTestClass()
-            .getResourceAsStream(path)) {
+    if (resource == null) {
+      throw new IllegalStateException(
+          String.format("Error loading resource %s. Resource is null.", filename));
+    }
+
+    try (final InputStream input = resource.openStream()) {
 
       return marshaller.unmarshal(
           new Marshaller.Args(
