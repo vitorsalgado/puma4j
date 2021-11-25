@@ -1,0 +1,9 @@
+[
+  {
+    "id": 123,
+    "test": "hello world",
+    "inner": {
+      "name": "no-one"
+    }
+  }
+]

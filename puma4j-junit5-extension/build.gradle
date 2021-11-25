@@ -4,6 +4,8 @@ dependencies {
   api project(":puma4j-core")
 
   implementation libs.junitJupiterApi
-  implementation libs.jacksonCore
-  implementation libs.jacksonDatabind
+
+  testImplementation libs.gson
+  testImplementation libs.jacksonCore
+  testImplementation libs.jacksonDatabind
 }
