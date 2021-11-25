@@ -16,6 +16,9 @@
   <a href="https://conventionalcommits.org">
     <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits"/>
   </a>
+  <a href="https://sonarcloud.io/project/overview?id=vitorsalgado_puma4j">
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=vitorsalgado_puma4j&metric=alert_status" alt="Sonar Quality Gate Status"/>
+  </a>
 </p>
 
 ## Overview
