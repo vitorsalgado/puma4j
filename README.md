@@ -42,22 +42,80 @@ or Maven:
 </dependency>
 ```
 
+## How It Works
+
+**Puma4j**, when enabled, detects fields or parameters annotated with `@Res` and inject resource
+values based on annotated element type, resource extension and any custom unmarshaller added.  
+You can use `String` and `byte[]` for all types of resources.  
+Puma4j is also able to convert some resource types to object type representations:
+
+- Json: Object types based on the json structure. It uses **ObjectMapper** and **Gson**. Defaults
+  to **ObjectMapper**
+- Yaml: Object types based on yaml structure. It uses **ObjectMapper**.
+- Properties: Converts `.properties` files to java `Properties` class.
+
+For custom **object conversions** use a custom **unmarshaller** using the annotation `@Use`, passing
+the class type of your custom unmarshaller implementation.
+
 ## Usage
+
+First, annotated your JUnit5 test classes with `@UsePuma4j`. Now you can use the annotation `@Res`
+to inject resources on class fields and method parameters.  
+Take a look on the complete example below:
 
 ```java
 
-@ExtendWith(TestResourceParameterResolver.class)
-public class JUnit5ExtensionUsageExample {
+@UsePuma4j
+class UsageWithJUnit5 {
+
+  @Res("data.txt")
+  private static String staticTextData;
+
+  @Res("complex.json")
+  private List<ComplexModel> complexModelList;
+
+  @Res("complex-yml.yaml")
+  private List<ComplexModel> complexModelListFromYaml;
+
+  @Res("test.properties")
+  private Properties testProperties;
+
+  @Res("simple.json")
+  @Use(JsonTreeMarshaller.class)
+  private JsonNode simpleJsonTree;
 
   @Test
-  void itShouldInjectAnObjectInstanceWhenParameterTypeIsObject(
-      final @Res("fixtureTest.json") TestData testData) {
-    assertEquals(123, testData.getId());
-    assertEquals("hello world", testData.getTest());
+  void simpleTest(final @Res("simple.json") SimpleModel model) {
+    assertEquals(50, model.getAge());
+    assertEquals("no-one", model.getName());
+  }
+
+  public static class JsonTreeMarshaller implements Marshaller<JsonNode> {
+
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+
+    @Override
+    public JsonNode unmarshal(final Args args) throws IOException {
+      return OBJECT_MAPPER.readTree(args.getInput());
+    }
   }
 }
-
 ```
+
+## Additional Features
+
+### Forcing Jackson or Gson
+
+For **json** files, the default parser is **Jackson Object Mapper**. If you want to use Gson for a
+specific type use: `@UseGson`. If applied in the class level, all json conversions will use Gson.
+You can use `@UseJackson` to keep using Object Mapper on specific resources.
+
+### Custom Unmarshaller
+
+You can your on **unmarshaller** implementation.  
+First, create a new class implementing the interface `Marshaller<O>`.  
+Then, use the annotation `@Use(YourCustomMarshaller.class)` on the class, field or method level to
+use your new custom component.
 
 ---
 
