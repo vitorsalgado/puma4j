@@ -18,6 +18,7 @@ public interface Marshaller<O> {
    *
    * @param args input and type information required to properly unmarshal the resource
    * @return O type
+   * @throws IOException when fails to read the resource from file system
    */
   O unmarshal(Args args) throws IOException;
 

@@ -22,11 +22,11 @@ import org.junit.jupiter.api.extension.ExtendWith;
  *
  * <p>Example:
  *
- * <pre>{@code
- * @UsePuma4j
+ * <pre>
+ * \@UsePuma4j
  * class YourTestClass {
  * }
- * }</pre>
+ * </pre>
  */
 @Retention(RUNTIME)
 @Target(TYPE)

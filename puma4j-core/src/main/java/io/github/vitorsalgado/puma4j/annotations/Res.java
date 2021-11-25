@@ -16,22 +16,22 @@ import java.lang.annotation.Target;
  *
  * <p>Example:
  *
- * <pre>{@code
- * @UsePuma4j
+ * <pre>
+ * \@UsePuma4j
  * class YourTestClass {
- *   @Res("text.txt")
+ *   \@Res("text.txt")
  *   private String text;
  *
- *   @Res("any.yml")
+ *   \@Res("any.yml")
  *   private static SuperModel superModel;
  *
- *   @Test
+ *   \@Test
  *   void yourNiceTest(@Res("test.json") YourModel model) {
  *     assertEquals(123, model.getId());
  *     assertEquals("hello world", model.getTest());
  *   }
  * }
- * }</pre>
+ * </pre>
  */
 @Retention(RUNTIME)
 @Target({PARAMETER, FIELD})
