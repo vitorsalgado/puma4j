@@ -30,13 +30,13 @@ using just a couple of **@annotations** :)
 
 Using Gradle:
 
-```groovy
+```
 implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:<VERSION>"
 ```
 
 or Maven:
 
-```xml
+```
 
 <dependency>
   <groupId>io.github.vitorsalgado.puma4j</groupId>
@@ -66,7 +66,7 @@ First, annotated your JUnit5 test classes with `@UsePuma4j`. Now you can use the
 to inject resources on class fields and method parameters.  
 Take a look on the complete example below:
 
-```java
+```
 
 @UsePuma4j
 class UsageWithJUnit5 {
