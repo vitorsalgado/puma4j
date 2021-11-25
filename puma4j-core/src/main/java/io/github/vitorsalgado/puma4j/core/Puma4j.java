@@ -60,22 +60,17 @@ public final class Puma4j {
         .forEach(ext -> READER_REGISTRY.registerMarshallerForExtension(ext, this.yamlMarshaller));
   }
 
-  private static class Puma4jSingleton {
-
-    private static final Puma4j INSTANCE = new Puma4j();
-  }
-
   public static Puma4j instance() {
     return Puma4jSingleton.INSTANCE;
+  }
+
+  public Provider resourceProvider() {
+    return new DefaultResourceProvider();
   }
 
   // endregion
 
   // region Marshaller Interface
-
-  public Provider resourceProvider() {
-    return new DefaultResourceProvider();
-  }
 
   public void registerMarshallerForExtension(
       final String extension, final Marshaller<?> marshaller) {
@@ -86,11 +81,11 @@ public final class Puma4j {
     return READER_REGISTRY.getMarshallerByExtension(extension);
   }
 
-  // endregion
-
   public Marshaller<?> jsonMarshaller() {
     return this.jsonMarshaller;
   }
+
+  // endregion
 
   public Marshaller<?> yamlMarshaller() {
     return this.yamlMarshaller;
@@ -106,5 +101,10 @@ public final class Puma4j {
 
   public Marshaller<?> binaryMarshaller() {
     return this.binaryMarshaller;
+  }
+
+  private static class Puma4jSingleton {
+
+    private static final Puma4j INSTANCE = new Puma4j();
   }
 }

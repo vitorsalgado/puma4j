@@ -4,7 +4,8 @@ import io.github.vitorsalgado.puma4j.core.Context;
 
 final class TestContextProvider {
 
-  private TestContextProvider() {}
+  private TestContextProvider() {
+  }
 
   static Context fromClass(final Class<?> clazz) {
     final UsePuma4j usePuma4j = clazz.getAnnotation(UsePuma4j.class);

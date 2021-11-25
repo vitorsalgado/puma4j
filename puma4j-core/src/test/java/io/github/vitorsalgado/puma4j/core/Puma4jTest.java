@@ -1,8 +1,6 @@
 package io.github.vitorsalgado.puma4j.core;
 
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 import io.github.vitorsalgado.puma4j.core.marshallers.JsonMarshaller;
 import io.github.vitorsalgado.puma4j.core.marshallers.YamlMarshaller;

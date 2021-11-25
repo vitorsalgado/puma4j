@@ -14,7 +14,8 @@ public class ComplexModel {
     this.inner = inner;
   }
 
-  public ComplexModel() {}
+  public ComplexModel() {
+  }
 
   public int getId() {
     return id;
@@ -58,7 +59,8 @@ public class ComplexModel {
       this.name = name;
     }
 
-    public Inner() {}
+    public Inner() {
+    }
 
     public String getName() {
       return name;

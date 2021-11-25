@@ -14,7 +14,8 @@ public class ComplexDataModel {
     this.inner = inner;
   }
 
-  public ComplexDataModel() {}
+  public ComplexDataModel() {
+  }
 
   public int getId() {
     return id;
@@ -70,7 +71,8 @@ public class ComplexDataModel {
       this.name = name;
     }
 
-    public Inner() {}
+    public Inner() {
+    }
 
     public String getName() {
       return name;

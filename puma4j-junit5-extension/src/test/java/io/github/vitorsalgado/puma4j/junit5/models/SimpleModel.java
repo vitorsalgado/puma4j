@@ -12,7 +12,8 @@ public class SimpleModel {
     this.message = message;
   }
 
-  public SimpleModel() {}
+  public SimpleModel() {
+  }
 
   public int getCount() {
     return count;

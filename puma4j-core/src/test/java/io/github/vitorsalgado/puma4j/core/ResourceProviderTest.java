@@ -23,64 +23,48 @@ class ResourceProviderTest {
 
   // region Res
 
+  private final Provider provider = new DefaultResourceProvider();
   @Res("no_extension")
   private SimpleModel noExtension;
-
   @Res("no_extension")
   @Use(CustomJsonMarshaller.class)
   private SimpleModel noExtensionWithCustomMarshaller;
-
   @Res("no_extension")
   @Use(InvalidMarshaller.class)
   private SimpleModel resWithInvalidMarshallerRef;
-
   @Res("data.txt")
   @Use(FailingMarshaller.class)
   private String resWithFailingMarshaller;
-
   @Res("data.txt")
   private String textRes;
-
   @Res("data.txt")
   private byte[] textResToBytes;
-
   @Res("data.txt")
   private Byte[] textResToBytesType;
-
   @Res("test.properties")
   private Properties propertiesRes;
-
   @Res("not_supported_extension.bin")
   private SimpleModel notSupportedData;
-
   @Res("simple.json")
   private SimpleModel simpleJson;
-
   @Res("simple.json")
   @UseGson
   private SimpleModel simpleJsonUsingGson;
-
   @Res("simple.json")
   @UseJackson
   private SimpleModel simpleJsonUsingJackson;
-
   @Res("simple-yml.yaml")
   private SimpleModel simpleYaml;
-
   @Res("complex.json")
   @UseGson
   private List<ComplexModel> complexJsonUsingGson;
-
   @Res("complex.json")
   @UseJackson
   private List<ComplexModel> complexJsonUsingJackson;
 
+  // endregion
   @Res("complex-yml.yaml")
   private List<ComplexDataModel> complexYaml;
-
-  // endregion
-
-  private final Provider provider = new DefaultResourceProvider();
 
   @Test
   @DisplayName("should use marshaller from @Use to load extensionless file")
@@ -405,7 +389,8 @@ class ResourceProviderTest {
 
   static class InvalidMarshaller implements Marshaller<Object> {
 
-    InvalidMarshaller(final String wrongParam) {}
+    InvalidMarshaller(final String wrongParam) {
+    }
 
     @Override
     public Object unmarshal(final Args args) throws IOException {

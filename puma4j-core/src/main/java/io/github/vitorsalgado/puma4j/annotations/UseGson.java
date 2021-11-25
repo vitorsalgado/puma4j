@@ -22,4 +22,6 @@ import java.lang.annotation.Target;
 @Target({TYPE, PARAMETER, FIELD})
 @Inherited
 @Documented
-public @interface UseGson {}
+public @interface UseGson {
+
+}

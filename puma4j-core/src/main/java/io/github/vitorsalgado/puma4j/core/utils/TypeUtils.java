@@ -6,7 +6,8 @@ import java.util.Optional;
 
 public final class TypeUtils {
 
-  private TypeUtils() {}
+  private TypeUtils() {
+  }
 
   public static <T extends Annotation> Optional<T> lookForAnnotation(
       final Class<T> annotation, final AnnotatedElement priority, final Class<?> root) {

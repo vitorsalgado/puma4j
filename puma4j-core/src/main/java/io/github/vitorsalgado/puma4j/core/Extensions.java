@@ -7,5 +7,6 @@ final class Extensions {
   static final String[] TEXT = {"txt"};
   static final String[] PROPERTIES = {"properties"};
 
-  private Extensions() {}
+  private Extensions() {
+  }
 }

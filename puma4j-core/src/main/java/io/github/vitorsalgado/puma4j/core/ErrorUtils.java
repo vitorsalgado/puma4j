@@ -5,7 +5,8 @@ import java.lang.reflect.Field;
 
 final class ErrorUtils {
 
-  private ErrorUtils() {}
+  private ErrorUtils() {
+  }
 
   static String buildErrorMessage(final String message, final Args args, final String filename) {
     final StringBuilder msg = new StringBuilder();

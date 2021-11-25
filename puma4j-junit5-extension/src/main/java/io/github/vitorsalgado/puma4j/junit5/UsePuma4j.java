@@ -33,9 +33,9 @@ import org.junit.jupiter.api.extension.ExtendWith;
 @Documented
 @Inherited
 @ExtendWith({
-  Puma4jBeforeAllCallback.class,
-  Puma4jBeforeEachCallback.class,
-  Puma4jResourceParameterResolver.class
+    Puma4jBeforeAllCallback.class,
+    Puma4jBeforeEachCallback.class,
+    Puma4jResourceParameterResolver.class
 })
 public @interface UsePuma4j {
 

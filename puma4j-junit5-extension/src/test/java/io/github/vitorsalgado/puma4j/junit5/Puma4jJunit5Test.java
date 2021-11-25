@@ -19,6 +19,7 @@ class Puma4jJunit5Test {
 
   @UsePuma4j
   static class General {
+
     @Test
     void loadFromTwoLevelSubPaths(final @Res("inner/sub/simple.json") SimpleModel resource) {
       assertEquals(1000, resource.getCount());
@@ -178,7 +179,8 @@ class Puma4jJunit5Test {
         this.data = data;
       }
 
-      public JacksonReq() {}
+      public JacksonReq() {
+      }
 
       public String getName() {
         return name;

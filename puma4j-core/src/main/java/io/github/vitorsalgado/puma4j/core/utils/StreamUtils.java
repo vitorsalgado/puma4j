@@ -10,10 +10,13 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.stream.Collectors;
 
-/** Stream Utilities. */
+/**
+ * Stream Utilities.
+ */
 public final class StreamUtils {
 
-  private StreamUtils() {}
+  private StreamUtils() {
+  }
 
   /**
    * Read an input stream and return its content as string.

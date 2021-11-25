@@ -12,18 +12,19 @@ public class SimpleDataModel {
     this.name = name;
   }
 
-  public SimpleDataModel() {}
+  public SimpleDataModel() {
+  }
 
   public int getAge() {
     return age;
   }
 
-  public String getName() {
-    return name;
-  }
-
   public void setAge(final int age) {
     this.age = age;
+  }
+
+  public String getName() {
+    return name;
   }
 
   public void setName(final String name) {

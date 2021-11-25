@@ -12,15 +12,15 @@ public class Context {
     return new Context("");
   }
 
-  public String getBasePath() {
-    return basePath;
-  }
-
   private static String fixBasePath(final String path) {
     if (path.startsWith("/")) {
       return path;
     }
 
     return "/" + path;
+  }
+
+  public String getBasePath() {
+    return basePath;
   }
 }
