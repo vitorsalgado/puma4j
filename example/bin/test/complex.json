@@ -1,9 +1,0 @@
-[
-  {
-    "id": 100,
-    "test": "test",
-    "inner": {
-      "name": "name"
-    }
-  }
-]

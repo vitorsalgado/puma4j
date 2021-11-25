@@ -1,3 +1,0 @@
-Header
-Line 1
-Footer
