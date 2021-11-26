@@ -44,10 +44,6 @@ tasks.withType(Sign) {
   onlyIf { !version.endsWith("SNAPSHOT") }
 }
 
-signing {
-  sign publishing.publications
-}
-
 publishing {
   publications {
     puma4j(MavenPublication) {
@@ -82,4 +78,8 @@ publishing {
       artifact javadocJar
     }
   }
+}
+
+signing {
+  sign publishing.publications.puma4j
 }
