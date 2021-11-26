@@ -34,7 +34,7 @@ using just a couple of **@annotations** :)
 Using Gradle:
 
 ```
-implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:<VERSION>"
+implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:1.0.0"
 ```
 
 or Maven:
@@ -44,7 +44,7 @@ or Maven:
 <dependency>
   <groupId>io.github.vitorsalgado.puma4j</groupId>
   <artifactId>puma4j-junit5-extension</artifactId>
-  <version>VERSION</version>
+  <version>1.0.0</version>
 </dependency>
 ```
 
