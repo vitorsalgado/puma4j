@@ -19,6 +19,9 @@
   <a href="https://sonarcloud.io/project/overview?id=vitorsalgado_puma4j">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=vitorsalgado_puma4j&metric=alert_status" alt="Sonar Quality Gate Status"/>
   </a>
+  <a href="https://search.maven.org/search?q=io.github.vitorsalgado.puma4j">
+    <img alt="Sonatype Nexus (Releases)" src="https://img.shields.io/nexus/r/io.github.vitorsalgado.puma4j/puma4j-junit5-extension?server=https%3A%2F%2Fs01.oss.sonatype.org%2F">  
+  </a>
 </p>
 
 ## Overview
