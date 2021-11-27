@@ -17,8 +17,6 @@ import java.util.Optional;
 
 public final class Puma4j {
 
-  // region Fields
-
   private static final MarshallerRegistry READER_REGISTRY = new MarshallerRegistry();
 
   private final JsonMarshaller jsonMarshaller;
@@ -26,10 +24,6 @@ public final class Puma4j {
   private final YamlMarshaller yamlMarshaller;
   private final PropertiesMarshaller propertiesMarshaller;
   private final BinaryMarshaller binaryMarshaller;
-
-  // endregion
-
-  // region Init
 
   Puma4j() {
     final Gson gson = new Gson();
@@ -68,10 +62,6 @@ public final class Puma4j {
     return new DefaultResourceProvider();
   }
 
-  // endregion
-
-  // region Marshaller Interface
-
   public void registerMarshallerForExtension(
       final String extension, final Marshaller<?> marshaller) {
     READER_REGISTRY.registerMarshallerForExtension(extension, marshaller);
@@ -84,8 +74,6 @@ public final class Puma4j {
   public Marshaller<?> jsonMarshaller() {
     return this.jsonMarshaller;
   }
-
-  // endregion
 
   public Marshaller<?> yamlMarshaller() {
     return this.yamlMarshaller;

@@ -18,7 +18,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
  * each of Puma4j jUni5 Extensions, which is not recommended.
  *
  * <p>It accepts a base path for a custom directory inside test resources. Defaults to the root
- * resources directory.
+ * resources' directory.
  *
  * <p>Example:
  *
