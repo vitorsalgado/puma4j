@@ -153,7 +153,3 @@ specification. Contributions of any kind welcome!
 ## License
 
 This project is [MIT Licensed](LICENSE).
-
----
-
-Made with ☕ in Santiago, Chile. 
