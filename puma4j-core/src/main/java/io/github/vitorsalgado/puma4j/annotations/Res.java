@@ -10,26 +10,25 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 /**
- * {@code @Res} is a field and method level annotation type. It sets that the annotated element
+ * {@code @Res} is a field and parameter level annotation type. It sets that the annotated element
  * value must be injected from the specified resource based on element type, file extension and
- * other annotation elements that may change conversion behaviour.
- *
- * <p>Example:
- *
+ * other annotation elements that may change conversion behaviour. Example:
  * <pre>
- * \@UsePuma4j
+ * {@code
+ * @UsePuma4j
  * class YourTestClass {
- *   \@Res("text.txt")
+ *   @Res("text.txt")
  *   private String text;
  *
- *   \@Res("any.yml")
+ *   @Res("any.yml")
  *   private static SuperModel superModel;
  *
- *   \@Test
+ *   @Test
  *   void yourNiceTest(@Res("test.json") YourModel model) {
  *     assertEquals(123, model.getId());
  *     assertEquals("hello world", model.getTest());
  *   }
+ * }
  * }
  * </pre>
  */

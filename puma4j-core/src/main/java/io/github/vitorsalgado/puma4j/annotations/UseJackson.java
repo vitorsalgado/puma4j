@@ -15,8 +15,8 @@ import java.lang.annotation.Target;
  * href="https://github.com/FasterXML/jackson">Jackson ObjectMapper</a> for Json conversion.
  *
  * <p>If applied on class level, all fields and method parameters will use Jackson Object Mapper
- * instead of Gson for Json conversion, unless they are marked with another annotation, like
- * \@UseGson, \@Use.
+ * instead of Gson for Json conversion, unless they are marked with another annotation, like {@code
+ * @UseGson, @Use}.
  */
 @Retention(RUNTIME)
 @Target({TYPE, PARAMETER, FIELD})
