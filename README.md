@@ -31,6 +31,8 @@ using just a couple of **@annotations** :)
 
 ## Download
 
+![Java 11](docs/assets/java.svg)
+
 Using Gradle:
 
 ```
