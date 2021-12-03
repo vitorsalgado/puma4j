@@ -7,7 +7,7 @@ module.exports = {
       updater: require('./scripts/release/bumpVersion')
     },
     {
-      filenam: 'README.md',
+      filename: 'README.md',
       updater: require('./scripts/release/changeReadmeVersion')
     }
   ]

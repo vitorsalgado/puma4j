@@ -7,5 +7,5 @@ module.exports.readVersion = function (contents) {
 }
 
 module.exports.writeVersion = function (contents, version) {
-  return contents.replace(VersionRegex, version)
+  return contents.replaceAll(VersionRegex, version)
 }
