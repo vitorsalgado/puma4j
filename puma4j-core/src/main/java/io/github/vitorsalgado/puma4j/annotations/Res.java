@@ -14,17 +14,17 @@ import java.lang.annotation.Target;
  * value must be injected from the specified resource based on element type, file extension and
  * other annotation elements that may change conversion behaviour. Example:
  * <pre>
- * {@code
- * @UsePuma4j
+ * {&#064;code
+ * &#064;UsePuma4j
  * class YourTestClass {
- *   @Res("text.txt")
+ *   &#064;Res("text.txt")
  *   private String text;
  *
- *   @Res("any.yml")
+ *   &#064;Res("any.yml")
  *   private static SuperModel superModel;
  *
- *   @Test
- *   void yourNiceTest(@Res("test.json") YourModel model) {
+ *   &#064;Test
+ *   void yourNiceTest(&#064;Res("test.json") YourModel model) {
  *     assertEquals(123, model.getId());
  *     assertEquals("hello world", model.getTest());
  *   }

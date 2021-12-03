@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
  *
  * <p>If applied on class level, all fields and method parameters will use Gson instead of Jackson
  * Object Mapper for Json conversion, unless they are marked with another annotation, like {@code
- * @UseJackson, @Use}.
+ * &#064;UseJackson, &#064;Use}.
  */
 @Retention(RUNTIME)
 @Target({TYPE, PARAMETER, FIELD})
