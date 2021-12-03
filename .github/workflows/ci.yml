@@ -48,17 +48,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: gradle build sonarqube --info
-
-      - name: Tests
         run: |
-          gradle check
+          gradle build
+          gradle jacocoRootTestReport
+          gradle sonarqube --info
 
       - name: Coverage
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
-          gradle jacocoRootTestReport
           bash <(curl -s https://codecov.io/bash)
 
   automerge:
