@@ -96,7 +96,7 @@ class UsageWithJUnit5 {
     assertEquals("no-one", model.getName());
   }
 
-  public static class JsonTreeMarshaller implements Marshaller<JsonNode> {
+  public static class JsonTreeUnmarshaller implements Unmarshaller<JsonNode> {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
@@ -108,7 +108,7 @@ class UsageWithJUnit5 {
 }
 ```
 
-## Additional Features
+## Features
 
 ### Forcing Jackson or Gson
 
@@ -119,9 +119,23 @@ You can use `@UseJackson` to keep using Object Mapper on specific resources.
 ### Custom Unmarshaller
 
 You can your on **unmarshaller** implementation.  
-First, create a new class implementing the interface `Marshaller<O>`.  
-Then, use the annotation `@Use(YourCustomMarshaller.class)` on the class, field or method level to
+First, create a new class implementing the interface `Unmarshaller<O>`.  
+Then, use the annotation `@Use(YourCustomUnmarshaller.class)` on the class, field or method level to
 use your new custom component.
+
+### Kotlin Delegate
+
+You can load resources using a Kotlin delegate also. Look the example below:
+
+```
+private val simpleModel: SimpleModel by res("simple.json")
+```
+
+To use the delegate `res`, add the library below to your project:
+
+```
+implementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:1.0.0"
+```
 
 ---
 
