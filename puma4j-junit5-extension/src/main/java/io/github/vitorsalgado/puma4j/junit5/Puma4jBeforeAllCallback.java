@@ -29,11 +29,9 @@ public class Puma4jBeforeAllCallback implements BeforeAllCallback {
           && !field.isSynthetic()) {
         final Object resource =
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     extensionContext.getRequiredTestClass(),
-                    field.getType(),
-                    field.getGenericType(),
                     field));
 
         field.setAccessible(true);

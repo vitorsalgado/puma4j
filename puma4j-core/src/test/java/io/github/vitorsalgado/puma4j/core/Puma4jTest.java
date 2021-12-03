@@ -2,8 +2,8 @@ package io.github.vitorsalgado.puma4j.core;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import io.github.vitorsalgado.puma4j.core.marshallers.JsonMarshaller;
-import io.github.vitorsalgado.puma4j.core.marshallers.YamlMarshaller;
+import io.github.vitorsalgado.puma4j.core.unmarshallers.JsonUnmarshaller;
+import io.github.vitorsalgado.puma4j.core.unmarshallers.YamlUnmarshaller;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -29,15 +29,15 @@ class Puma4jTest {
     final var jsonExt = "json";
     final var unknownExt = "unknown";
 
-    assertInstanceOf(JsonMarshaller.class, puma4j.getMarshallerByExtension(jsonExt).orElseThrow());
+    assertInstanceOf(JsonUnmarshaller.class, puma4j.getMarshallerByExtension(jsonExt).orElseThrow());
 
-    puma4j.registerMarshallerForExtension(jsonExt, new CustomJsonMarshaller());
-    puma4j.registerMarshallerForExtension(unknownExt, new NewMarshaller());
+    puma4j.registerMarshallerForExtension(jsonExt, new CustomJsonUnmarshaller());
+    puma4j.registerMarshallerForExtension(unknownExt, new NewUnmarshaller());
 
     assertInstanceOf(
-        CustomJsonMarshaller.class, puma4j.getMarshallerByExtension(jsonExt).orElseThrow());
+        CustomJsonUnmarshaller.class, puma4j.getMarshallerByExtension(jsonExt).orElseThrow());
     assertInstanceOf(
-        NewMarshaller.class, puma4j.getMarshallerByExtension(unknownExt).orElseThrow());
+        NewUnmarshaller.class, puma4j.getMarshallerByExtension(unknownExt).orElseThrow());
   }
 
   @Test
@@ -45,16 +45,16 @@ class Puma4jTest {
   void addMarshallerWithInvalidExtension() {
     assertThrows(
         NullPointerException.class,
-        () -> puma4j.registerMarshallerForExtension(null, new NewMarshaller()));
+        () -> puma4j.registerMarshallerForExtension(null, new NewUnmarshaller()));
   }
 
   @Test
   @DisplayName("should return the correct marshaller for provided extension")
   void getMarshallerByExt() {
-    assertInstanceOf(YamlMarshaller.class, puma4j.getMarshallerByExtension("yaml").orElseThrow());
+    assertInstanceOf(YamlUnmarshaller.class, puma4j.getMarshallerByExtension("yaml").orElseThrow());
   }
 
-  static class CustomJsonMarshaller implements Marshaller<Object> {
+  static class CustomJsonUnmarshaller implements Unmarshaller<Object> {
 
     @Override
     public Object unmarshal(final Args args) {
@@ -62,7 +62,7 @@ class Puma4jTest {
     }
   }
 
-  static class NewMarshaller implements Marshaller<Object> {
+  static class NewUnmarshaller implements Unmarshaller<Object> {
 
     @Override
     public Object unmarshal(final Args args) {

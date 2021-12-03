@@ -5,8 +5,8 @@ ext {
   libs = [:]
 }
 
-def versions = [:]
-def libs = [:]
+LinkedHashMap<Object, String> versions = [:]
+LinkedHashMap<Object, String> libs = [:]
 
 // Lib Versions
 // --
@@ -25,6 +25,8 @@ libs.jacksonJsr310 = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${v
 libs.jacksonJdk8 = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${versions.jackson}"
 libs.jacksonYaml = "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:${versions.jackson}"
 libs.gson = "com.google.code.gson:gson:${versions.gson}"
+libs.kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib"
+libs.kotlinReflection = "org.jetbrains.kotlin:kotlin-reflect"
 
 // Utils
 // --

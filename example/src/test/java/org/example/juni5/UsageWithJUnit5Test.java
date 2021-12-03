@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.vitorsalgado.puma4j.annotations.Res;
 import io.github.vitorsalgado.puma4j.annotations.Use;
-import io.github.vitorsalgado.puma4j.core.Marshaller;
+import io.github.vitorsalgado.puma4j.core.Unmarshaller;
 import io.github.vitorsalgado.puma4j.junit5.UsePuma4j;
 import java.io.IOException;
 import java.util.List;
@@ -31,7 +31,7 @@ class UsageWithJUnit5Test {
   private Properties testProperties;
 
   @Res("simple.json")
-  @Use(JsonTreeMarshaller.class)
+  @Use(JsonTreeUnmarshaller.class)
   private JsonNode simpleJsonTree;
 
   @Test
@@ -40,7 +40,7 @@ class UsageWithJUnit5Test {
     assertEquals("no-one", model.getName());
   }
 
-  public static class JsonTreeMarshaller implements Marshaller<JsonNode> {
+  public static class JsonTreeUnmarshaller implements Unmarshaller<JsonNode> {
 
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 

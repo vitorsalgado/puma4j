@@ -6,6 +6,7 @@ final class Extensions {
   static final String[] YML = {"yml", "yaml"};
   static final String[] TEXT = {"txt"};
   static final String[] PROPERTIES = {"properties"};
+  static final String[] XML = {"xml"};
 
   private Extensions() {
   }

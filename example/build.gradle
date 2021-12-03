@@ -1,5 +1,10 @@
+plugins {
+  id 'org.jetbrains.kotlin.jvm' version '1.5.31'
+}
+
 dependencies {
   testImplementation project(":puma4j-junit5-extension")
+  testImplementation project(":puma4j-kotlin")
 
   testImplementation libs.jacksonCore
   testImplementation libs.jacksonDatabind

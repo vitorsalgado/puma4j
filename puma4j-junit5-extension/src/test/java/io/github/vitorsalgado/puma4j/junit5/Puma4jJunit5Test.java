@@ -18,7 +18,7 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 class Puma4jJunit5Test {
 
   @UsePuma4j
-  static class General {
+  static class GeneralTest {
 
     @Test
     void loadFromTwoLevelSubPaths(final @Res("inner/sub/simple.json") SimpleModel resource) {
@@ -28,7 +28,7 @@ class Puma4jJunit5Test {
   }
 
   @UsePuma4j("inner")
-  static class WithSubPath {
+  static class WithSubPathTest {
 
     @Res("inner.json")
     private static SimpleModel staticFieldRes;
@@ -61,7 +61,7 @@ class Puma4jJunit5Test {
 
   @TestInstance(Lifecycle.PER_CLASS)
   @UsePuma4j
-  static class WithLifeCyclePerClass {
+  static class WithLifeCyclePerClassTest {
 
     @Res("complex.json")
     private static List<ComplexModel> staticComplexJson;
@@ -93,7 +93,7 @@ class Puma4jJunit5Test {
 
   @TestInstance(Lifecycle.PER_METHOD)
   @UsePuma4j
-  static class WithLifeCyclePerMethod {
+  static class WithLifeCyclePerMethodTest {
 
     @Res("complex.json")
     private static List<ComplexModel> staticComplexJson;
@@ -125,7 +125,7 @@ class Puma4jJunit5Test {
 
   @UsePuma4j
   @UseGson
-  static class WithClassLevelUnmarshaller {
+  static class WithClassLevelUnmarshallerTest {
 
     @Test
     @DisplayName("should use gson only as it is defined on class level")

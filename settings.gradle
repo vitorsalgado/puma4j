@@ -2,4 +2,5 @@ rootProject.name = 'puma4j'
 
 include 'puma4j-core'
 include 'puma4j-junit5-extension'
+include 'puma4j-kotlin'
 include 'example'

@@ -1,0 +1,12 @@
+plugins {
+  id 'org.jetbrains.kotlin.jvm' version '1.5.31'
+}
+
+dependencies {
+  api project(":puma4j-core")
+
+  implementation libs.kotlinStdLib
+  implementation libs.kotlinReflection
+}
+
+ext.moduleName = 'io.github.vitorsalgado.puma4j.kotlin'

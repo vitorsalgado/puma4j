@@ -20,10 +20,10 @@ final class ErrorUtils {
         .append("Test Class: ")
         .append(args.getTestClass().getSimpleName());
 
-    if (args.getAnnotatedElement() instanceof Field) {
+    if (args.getTargetElement() instanceof Field) {
       msg.append(System.lineSeparator())
           .append("Field: ")
-          .append(((Field) args.getAnnotatedElement()).getName());
+          .append(((Field) args.getTargetElement()).getName());
     }
 
     return msg.toString();

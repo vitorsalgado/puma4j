@@ -7,23 +7,23 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.google.gson.Gson;
-import io.github.vitorsalgado.puma4j.core.marshallers.BinaryMarshaller;
-import io.github.vitorsalgado.puma4j.core.marshallers.JsonMarshaller;
-import io.github.vitorsalgado.puma4j.core.marshallers.PropertiesMarshaller;
-import io.github.vitorsalgado.puma4j.core.marshallers.TextMarshaller;
-import io.github.vitorsalgado.puma4j.core.marshallers.YamlMarshaller;
+import io.github.vitorsalgado.puma4j.core.unmarshallers.BinaryUnmarshaller;
+import io.github.vitorsalgado.puma4j.core.unmarshallers.JsonUnmarshaller;
+import io.github.vitorsalgado.puma4j.core.unmarshallers.PropertiesUnmarshaller;
+import io.github.vitorsalgado.puma4j.core.unmarshallers.TextUnmarshaller;
+import io.github.vitorsalgado.puma4j.core.unmarshallers.YamlUnmarshaller;
 import java.util.Arrays;
 import java.util.Optional;
 
 public final class Puma4j {
 
-  private static final MarshallerRegistry READER_REGISTRY = new MarshallerRegistry();
+  private static final UnmarshallerRegistry READER_REGISTRY = new UnmarshallerRegistry();
 
-  private final JsonMarshaller jsonMarshaller;
-  private final TextMarshaller textMarshaller;
-  private final YamlMarshaller yamlMarshaller;
-  private final PropertiesMarshaller propertiesMarshaller;
-  private final BinaryMarshaller binaryMarshaller;
+  private final JsonUnmarshaller jsonMarshaller;
+  private final TextUnmarshaller textMarshaller;
+  private final YamlUnmarshaller yamlMarshaller;
+  private final PropertiesUnmarshaller propertiesMarshaller;
+  private final BinaryUnmarshaller binaryMarshaller;
 
   Puma4j() {
     final Gson gson = new Gson();
@@ -37,11 +37,11 @@ public final class Puma4j {
             .findAndAddModules()
             .build();
 
-    this.jsonMarshaller = new JsonMarshaller(gson, objectMapperForJson);
-    this.yamlMarshaller = new YamlMarshaller(objectMapperForYaml);
-    this.textMarshaller = new TextMarshaller();
-    this.propertiesMarshaller = new PropertiesMarshaller();
-    this.binaryMarshaller = new BinaryMarshaller();
+    this.jsonMarshaller = new JsonUnmarshaller(gson, objectMapperForJson);
+    this.yamlMarshaller = new YamlUnmarshaller(objectMapperForYaml);
+    this.textMarshaller = new TextUnmarshaller();
+    this.propertiesMarshaller = new PropertiesUnmarshaller();
+    this.binaryMarshaller = new BinaryUnmarshaller();
 
     Arrays.stream(Extensions.JSON)
         .forEach(ext -> READER_REGISTRY.registerMarshallerForExtension(ext, this.jsonMarshaller));
@@ -63,31 +63,31 @@ public final class Puma4j {
   }
 
   public void registerMarshallerForExtension(
-      final String extension, final Marshaller<?> marshaller) {
-    READER_REGISTRY.registerMarshallerForExtension(extension, marshaller);
+      final String extension, final Unmarshaller<?> unmarshaller) {
+    READER_REGISTRY.registerMarshallerForExtension(extension, unmarshaller);
   }
 
-  public Optional<Marshaller<?>> getMarshallerByExtension(final String extension) {
+  public Optional<Unmarshaller<?>> getMarshallerByExtension(final String extension) {
     return READER_REGISTRY.getMarshallerByExtension(extension);
   }
 
-  public Marshaller<?> jsonMarshaller() {
+  public Unmarshaller<?> jsonMarshaller() {
     return this.jsonMarshaller;
   }
 
-  public Marshaller<?> yamlMarshaller() {
+  public Unmarshaller<?> yamlMarshaller() {
     return this.yamlMarshaller;
   }
 
-  public Marshaller<?> propertiesMarshaller() {
+  public Unmarshaller<?> propertiesMarshaller() {
     return this.propertiesMarshaller;
   }
 
-  public Marshaller<?> textMarshaller() {
+  public Unmarshaller<?> textMarshaller() {
     return this.textMarshaller;
   }
 
-  public Marshaller<?> binaryMarshaller() {
+  public Unmarshaller<?> binaryMarshaller() {
     return this.binaryMarshaller;
   }
 

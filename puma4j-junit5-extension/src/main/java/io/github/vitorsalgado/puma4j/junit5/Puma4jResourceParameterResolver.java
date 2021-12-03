@@ -3,6 +3,7 @@ package io.github.vitorsalgado.puma4j.junit5;
 import io.github.vitorsalgado.puma4j.annotations.Res;
 import io.github.vitorsalgado.puma4j.core.Context;
 import io.github.vitorsalgado.puma4j.core.Provider;
+import io.github.vitorsalgado.puma4j.core.Provider.Args;
 import io.github.vitorsalgado.puma4j.core.Puma4j;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.ParameterContext;
@@ -27,11 +28,8 @@ public class Puma4jResourceParameterResolver implements ParameterResolver {
     final Provider provider = Puma4j.instance().resourceProvider();
 
     return provider.provide(
-        new Provider.Args(
-            context,
+        Args.annotatedType(context,
             extensionContext.getRequiredTestClass(),
-            parameterContext.getParameter().getType(),
-            parameterContext.getParameter().getParameterizedType(),
             parameterContext.getParameter()));
   }
 }

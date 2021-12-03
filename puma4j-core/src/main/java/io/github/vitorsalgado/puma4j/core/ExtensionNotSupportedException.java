@@ -2,14 +2,16 @@ package io.github.vitorsalgado.puma4j.core;
 
 import static io.github.vitorsalgado.puma4j.core.ErrorUtils.buildErrorMessage;
 
+import io.github.vitorsalgado.puma4j.core.Provider.Args;
+
 class ExtensionNotSupportedException extends RuntimeException {
 
   ExtensionNotSupportedException(final String message) {
     super(message);
   }
 
-  static ExtensionNotSupportedException createNew(
-      final Provider.Args args, final String filename, final String extension) {
+  static ExtensionNotSupportedException newExtNotSupportedException(
+      final Args args, final String filename, final String extension) {
     return new ExtensionNotSupportedException(
         buildErrorMessage(
             String.format(

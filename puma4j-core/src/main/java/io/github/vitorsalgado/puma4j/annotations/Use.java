@@ -5,7 +5,7 @@ import static java.lang.annotation.ElementType.PARAMETER;
 import static java.lang.annotation.ElementType.TYPE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-import io.github.vitorsalgado.puma4j.core.Marshaller;
+import io.github.vitorsalgado.puma4j.core.Unmarshaller;
 import java.lang.annotation.Documented;
 import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
@@ -24,9 +24,9 @@ public @interface Use {
 
   /**
    * Class reference to the custom unmarshaller. Needs to be public, an instance of {@link
-   * Marshaller} interface and contains an arg-less constructor.
+   * Unmarshaller} interface and contains an arg-less constructor.
    *
    * @return custom unmarshaller class reference.
    */
-  Class<? extends Marshaller<?>> value();
+  Class<? extends Unmarshaller<?>> value();
 }

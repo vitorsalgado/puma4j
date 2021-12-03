@@ -36,6 +36,10 @@ allprojects {
   repositories {
     mavenCentral()
   }
+
+  jacoco {
+    toolVersion = "0.8.7"
+  }
 }
 
 subprojects {
@@ -100,7 +104,7 @@ task jacocoRootTestReport(type: JacocoReport) {
   coreProjects.each { dependsOn("${it.name}:test") }
   coreProjects.each { dependsOn("${it.name}:jacocoTestReport") }
 
-  executionData fileTree(project.rootDir.absolutePath).include("**/build/jacoco/*.exec")
+  executionData.setFrom project.fileTree(dir: '.', include: '**/build/jacoco/test.exec')
 
   subprojects.each {
     sourceSets it.sourceSets.main

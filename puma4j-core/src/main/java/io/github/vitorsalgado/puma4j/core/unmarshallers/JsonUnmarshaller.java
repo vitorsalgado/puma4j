@@ -1,4 +1,4 @@
-package io.github.vitorsalgado.puma4j.core.marshallers;
+package io.github.vitorsalgado.puma4j.core.unmarshallers;
 
 import static io.github.vitorsalgado.puma4j.core.utils.TypeUtils.isAnnotationPresent;
 import static java.util.Objects.requireNonNull;
@@ -7,16 +7,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import io.github.vitorsalgado.puma4j.annotations.UseGson;
 import io.github.vitorsalgado.puma4j.annotations.UseJackson;
-import io.github.vitorsalgado.puma4j.core.Marshaller;
+import io.github.vitorsalgado.puma4j.core.Unmarshaller;
 import io.github.vitorsalgado.puma4j.core.utils.StreamUtils;
 import java.io.IOException;
 
-public class JsonMarshaller implements Marshaller<Object> {
+public class JsonUnmarshaller implements Unmarshaller<Object> {
 
   private final Gson gson;
   private final ObjectMapper objectMapper;
 
-  public JsonMarshaller(final Gson gson, final ObjectMapper objectMapper) {
+  public JsonUnmarshaller(final Gson gson, final ObjectMapper objectMapper) {
     this.gson = requireNonNull(gson);
     this.objectMapper = requireNonNull(objectMapper);
   }

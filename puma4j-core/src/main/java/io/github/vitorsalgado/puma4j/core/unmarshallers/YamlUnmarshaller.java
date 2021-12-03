@@ -1,16 +1,16 @@
-package io.github.vitorsalgado.puma4j.core.marshallers;
+package io.github.vitorsalgado.puma4j.core.unmarshallers;
 
 import static java.util.Objects.requireNonNull;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import io.github.vitorsalgado.puma4j.core.Marshaller;
+import io.github.vitorsalgado.puma4j.core.Unmarshaller;
 import java.io.IOException;
 
-public class YamlMarshaller implements Marshaller<Object> {
+public class YamlUnmarshaller implements Unmarshaller<Object> {
 
   private final ObjectMapper objectMapper;
 
-  public YamlMarshaller(final ObjectMapper objectMapper) {
+  public YamlUnmarshaller(final ObjectMapper objectMapper) {
     this.objectMapper = objectMapper;
   }
 

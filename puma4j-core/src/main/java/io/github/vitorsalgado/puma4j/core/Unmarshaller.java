@@ -11,7 +11,7 @@ import java.lang.reflect.Type;
  *
  * @param <O> return type. If in doubt, just use Object.
  */
-public interface Marshaller<O> {
+public interface Unmarshaller<O> {
 
   /**
    * Unmarshal a resource into an {@code O} representation.

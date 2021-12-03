@@ -10,7 +10,6 @@ import io.github.vitorsalgado.puma4j.annotations.UseJackson;
 import io.github.vitorsalgado.puma4j.core.Provider.Args;
 import io.github.vitorsalgado.puma4j.core.models.ComplexDataModel;
 import io.github.vitorsalgado.puma4j.core.models.ComplexModel;
-import io.github.vitorsalgado.puma4j.core.models.SimpleDataModel;
 import io.github.vitorsalgado.puma4j.core.models.SimpleModel;
 import io.github.vitorsalgado.puma4j.core.utils.StreamUtils;
 import java.io.IOException;
@@ -21,19 +20,16 @@ import org.junit.jupiter.api.Test;
 
 class ResourceProviderTest {
 
-  // region Res
-
-  private final Provider provider = new DefaultResourceProvider();
   @Res("no_extension")
   private SimpleModel noExtension;
   @Res("no_extension")
-  @Use(CustomJsonMarshaller.class)
+  @Use(CustomJsonUnmarshaller.class)
   private SimpleModel noExtensionWithCustomMarshaller;
   @Res("no_extension")
-  @Use(InvalidMarshaller.class)
+  @Use(InvalidUnmarshaller.class)
   private SimpleModel resWithInvalidMarshallerRef;
   @Res("data.txt")
-  @Use(FailingMarshaller.class)
+  @Use(FailingUnmarshaller.class)
   private String resWithFailingMarshaller;
   @Res("data.txt")
   private String textRes;
@@ -61,10 +57,12 @@ class ResourceProviderTest {
   @Res("complex.json")
   @UseJackson
   private List<ComplexModel> complexJsonUsingJackson;
-
-  // endregion
   @Res("complex-yml.yaml")
   private List<ComplexDataModel> complexYaml;
+  @Res("complex.xml")
+  private List<ComplexDataModel> complexXml;
+
+  private final Provider provider = new DefaultResourceProvider();
 
   @Test
   @DisplayName("should use marshaller from @Use to load extensionless file")
@@ -74,13 +72,11 @@ class ResourceProviderTest {
     final var resource =
         (SimpleModel)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    SimpleModel.class,
-                    SimpleModel.class,
-                    ResourceProviderTest.class.getDeclaredField(
-                        "noExtensionWithCustomMarshaller")));
+                    ResourceProviderTest.class
+                        .getDeclaredField("noExtensionWithCustomMarshaller")));
 
     assertEquals(150, resource.getAge());
     assertEquals("SomeOne Nice", resource.getName());
@@ -94,11 +90,9 @@ class ResourceProviderTest {
     final var resource =
         (String)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    String.class,
-                    String.class,
                     ResourceProviderTest.class.getDeclaredField("textRes")));
 
     assertEquals("Header\nLine 1\nFooter", resource);
@@ -112,20 +106,16 @@ class ResourceProviderTest {
     final var byteArr =
         (byte[])
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    byte[].class,
-                    byte[].class,
                     ResourceProviderTest.class.getDeclaredField("textResToBytes")));
     final var byteTypeArr =
         (byte[])
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    Byte[].class,
-                    Byte[].class,
                     ResourceProviderTest.class.getDeclaredField("textResToBytesType")));
 
     assertNotNull(byteArr);
@@ -141,11 +131,9 @@ class ResourceProviderTest {
     final var resource =
         (Properties)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    Properties.class,
-                    Properties.class,
                     ResourceProviderTest.class.getDeclaredField("propertiesRes")));
 
     assertEquals("properties loading", resource.getProperty("test.name"));
@@ -160,11 +148,9 @@ class ResourceProviderTest {
     final var resource =
         (SimpleModel)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    SimpleModel.class,
-                    SimpleModel.class,
                     ResourceProviderTest.class.getDeclaredField("simpleJson")));
 
     assertEquals(50, resource.getAge());
@@ -179,11 +165,9 @@ class ResourceProviderTest {
     final var resource =
         (SimpleModel)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    SimpleModel.class,
-                    SimpleModel.class,
                     ResourceProviderTest.class.getDeclaredField("simpleJsonUsingGson")));
 
     assertEquals(50, resource.getAge());
@@ -198,11 +182,9 @@ class ResourceProviderTest {
     final var resource =
         (SimpleModel)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    SimpleModel.class,
-                    SimpleModel.class,
                     ResourceProviderTest.class.getDeclaredField("simpleJsonUsingJackson")));
 
     assertEquals(50, resource.getAge());
@@ -215,13 +197,11 @@ class ResourceProviderTest {
     final var context = new Context("");
 
     final var resource =
-        (SimpleDataModel)
+        (SimpleModel)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    SimpleDataModel.class,
-                    SimpleDataModel.class,
                     ResourceProviderTest.class.getDeclaredField("simpleYaml")));
 
     assertEquals(50, resource.getAge());
@@ -237,11 +217,9 @@ class ResourceProviderTest {
     final var resource =
         (List<ComplexModel>)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    field.getType(),
-                    field.getGenericType(),
                     field));
 
     assertEquals(1, resource.size());
@@ -262,11 +240,9 @@ class ResourceProviderTest {
     final var resource =
         (List<ComplexModel>)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    field.getType(),
-                    field.getGenericType(),
                     field));
 
     assertEquals(1, resource.size());
@@ -287,11 +263,9 @@ class ResourceProviderTest {
     final var resource =
         (List<ComplexDataModel>)
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    field.getType(),
-                    field.getGenericType(),
                     field));
 
     assertEquals(1, resource.size());
@@ -314,11 +288,9 @@ class ResourceProviderTest {
         NoMarshallerException.class,
         () ->
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    SimpleModel.class,
-                    SimpleModel.class,
                     ResourceProviderTest.class.getDeclaredField("noExtension"))));
   }
 
@@ -331,11 +303,9 @@ class ResourceProviderTest {
         InvalidMarshallerClassException.class,
         () ->
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    SimpleModel.class,
-                    SimpleModel.class,
                     ResourceProviderTest.class.getDeclaredField("resWithInvalidMarshallerRef"))));
   }
 
@@ -348,11 +318,9 @@ class ResourceProviderTest {
         UnmarshallingException.class,
         () ->
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    String.class,
-                    String.class,
                     ResourceProviderTest.class.getDeclaredField("resWithFailingMarshaller"))));
   }
 
@@ -365,11 +333,9 @@ class ResourceProviderTest {
         ExtensionNotSupportedException.class,
         () ->
             provider.provide(
-                new Args(
+                Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
-                    SimpleModel.class,
-                    SimpleModel.class,
                     ResourceProviderTest.class.getDeclaredField("notSupportedData"))));
   }
 
@@ -377,7 +343,7 @@ class ResourceProviderTest {
 
   // region Test Marshallers
 
-  static class CustomJsonMarshaller implements Marshaller<Object> {
+  static class CustomJsonUnmarshaller implements Unmarshaller<Object> {
 
     private static final Gson GSON = new Gson();
 
@@ -387,9 +353,9 @@ class ResourceProviderTest {
     }
   }
 
-  static class InvalidMarshaller implements Marshaller<Object> {
+  static class InvalidUnmarshaller implements Unmarshaller<Object> {
 
-    InvalidMarshaller(final String wrongParam) {
+    InvalidUnmarshaller(final String wrongParam) {
     }
 
     @Override
@@ -398,7 +364,7 @@ class ResourceProviderTest {
     }
   }
 
-  static class FailingMarshaller implements Marshaller<Object> {
+  static class FailingUnmarshaller implements Unmarshaller<Object> {
 
     @Override
     public Object unmarshal(final Args args) throws IOException {
