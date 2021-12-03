@@ -8,4 +8,5 @@ dependencies {
   implementation libs.jacksonJdk8
   implementation libs.jacksonYaml
   implementation libs.gson
+  implementation libs.jacksonKotlin
 }

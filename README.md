@@ -42,7 +42,6 @@ implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:1.0.0"
 or Maven:
 
 ```
-
 <dependency>
   <groupId>io.github.vitorsalgado.puma4j</groupId>
   <artifactId>puma4j-junit5-extension</artifactId>
@@ -72,7 +71,6 @@ to inject resources on class fields and method parameters.
 Take a look on the complete example below:
 
 ```
-
 @UsePuma4j
 class UsageWithJUnit5 {
 
