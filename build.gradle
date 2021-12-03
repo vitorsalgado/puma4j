@@ -70,6 +70,8 @@ subprojects {
       showStackTraces true
       exceptionFormat "full"
     }
+
+    finalizedBy jacocoTestReport
   }
 
   // Common dependencies shared by all modules
@@ -77,6 +79,10 @@ subprojects {
   dependencies {
     testImplementation libs.junitJupiterApi
     testRuntimeOnly libs.junitJupiterEngine
+  }
+
+  jacocoTestReport {
+    dependsOn test
   }
 }
 
@@ -148,8 +154,4 @@ sonarqube {
 
 wrapper {
   distributionType = Wrapper.DistributionType.ALL
-}
-
-subprojects {
-  it.tasks.check.dependsOn rootProject.tasks.jacocoRootTestReport
 }
