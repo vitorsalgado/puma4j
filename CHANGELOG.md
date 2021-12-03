@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/vitorsalgado/puma4j/compare/v1.0.0...v2.0.0) (2021-12-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* most components where renamed and refactored and the public interface to extend the lib was changed
+
+### Features
+
+* add kotlin support ([722326f](https://github.com/vitorsalgado/puma4j/commit/722326f31c6056e145419e669d1c911aa52d1a21))
+* change lib structure and public interface + add kotlin delegate res ([936fde7](https://github.com/vitorsalgado/puma4j/commit/936fde7502ba55083869ff769cb252aab550785c))
+
 ## 1.0.0 (2021-11-26)
 
 

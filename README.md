@@ -14,7 +14,7 @@
     <img src="https://codecov.io/gh/vitorsalgado/puma4j/branch/main/graph/badge.svg?token=EFC2SD81AV" alt="Codecov Badge"/>
   </a>
   <a href="https://conventionalcommits.org">
-    <img src="https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg" alt="Conventional Commits"/>
+    <img src="https://img.shields.io/badge/Conventional%20Commits-2.0.0-yellow.svg" alt="Conventional Commits"/>
   </a>
   <a href="https://sonarcloud.io/project/overview?id=vitorsalgado_puma4j">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=vitorsalgado_puma4j&metric=alert_status" alt="Sonar Quality Gate Status"/>
@@ -36,7 +36,7 @@ using just a couple of **@annotations** :)
 Using Gradle:
 
 ```
-implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:1.0.0"
+implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:2.0.0"
 ```
 
 or Maven:
@@ -45,7 +45,7 @@ or Maven:
 <dependency>
   <groupId>io.github.vitorsalgado.puma4j</groupId>
   <artifactId>puma4j-junit5-extension</artifactId>
-  <version>1.0.0</version>
+  <version>2.0.0</version>
 </dependency>
 ```
 
@@ -134,7 +134,7 @@ private val simpleModel: SimpleModel by res("simple.json")
 To use the delegate `res`, add the library below to your project:
 
 ```
-implementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:1.0.0"
+implementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:2.0.0"
 ```
 
 ---
