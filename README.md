@@ -87,7 +87,7 @@ class UsageWithJUnit5 {
   private Properties testProperties;
 
   @Res("simple.json")
-  @Use(JsonTreeMarshaller.class)
+  @Use(JsonTreeUnmarshaller.class)
   private JsonNode simpleJsonTree;
 
   @Test
