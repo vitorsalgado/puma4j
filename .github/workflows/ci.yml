@@ -113,11 +113,6 @@ jobs:
         with:
           node-version: 16.x
 
-      - name: Generate Version Changelog
-        run: |
-          npm install -g conventional-changelog-cli
-          conventional-changelog -p angular -i CHANGELOG_LATEST.md -s
-
       - name: Create Release
         uses: actions/create-release@v1
         env:
@@ -125,6 +120,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body_path: CHANGELOG_LATEST.md
+          body_path: CHANGELOG.md
           draft: false
           prerelease: contains(github.ref, '-')
