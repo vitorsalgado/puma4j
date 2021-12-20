@@ -51,9 +51,14 @@ jobs:
         run: |
           gradle build
           gradle jacocoRootTestReport
+
+      - name: Sonar
+        if: github.ref == 'refs/heads/main'
+        run: |
           gradle sonarqube --info
 
       - name: Coverage
+        if: github.ref == 'refs/heads/main'
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
