@@ -123,7 +123,7 @@ task jacocoRootTestReport(type: JacocoReport) {
   }
 
   reports {
-    xml.required.set isCI
+    xml.required.set true
     xml.destination file(allTestCoverageFile)
     html.required.set true
     csv.required.set false
