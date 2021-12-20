@@ -45,15 +45,15 @@ jobs:
           restore-keys: ${{ runner.os }}-gradle
 
       - name: Build
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           gradle build
           gradle jacocoRootTestReport
 
       - name: Sonar
         if: github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           gradle sonarqube --info
 
