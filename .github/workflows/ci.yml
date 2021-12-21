@@ -113,6 +113,10 @@ jobs:
         with:
           node-version: 16.x
 
+      - name: Latest Changelog
+        run: |
+          diff --changed-group-format='%>' --unchanged-group-format='' <( git show HEAD~1:CHANGELOG.md ) CHANGELOG.md > CHANGELOG_LATEST.md || true
+
       - name: Create Release
         uses: actions/create-release@v1
         env:
@@ -120,6 +124,6 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: Release ${{ github.ref }}
-          body_path: CHANGELOG.md
+          body_path: CHANGELOG_LATEST.md
           draft: false
           prerelease: contains(github.ref, '-')
