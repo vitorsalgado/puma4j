@@ -1,0 +1,21 @@
+{
+  "name": "puma4j",
+  "version": "2.0.1",
+  "description": "Puma4j Support Scripts",
+  "scripts": {
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vitorsalgado/puma4j.git"
+  },
+  "author": "@vitorsalgado",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vitorsalgado/puma4j/issues"
+  },
+  "homepage": "https://github.com/vitorsalgado/puma4j#readme",
+  "dependencies": {
+    "standard-version": "^9.3.2"
+  }
+}

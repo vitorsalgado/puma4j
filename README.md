@@ -36,7 +36,7 @@ using just a couple of **@annotations** :)
 Using Gradle:
 
 ```
-implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:2.0.0"
+implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:2.0.1"
 ```
 
 or Maven:
@@ -45,7 +45,7 @@ or Maven:
 <dependency>
   <groupId>io.github.vitorsalgado.puma4j</groupId>
   <artifactId>puma4j-junit5-extension</artifactId>
-  <version>2.0.0</version>
+  <version>2.0.1</version>
 </dependency>
 ```
 
@@ -134,7 +134,7 @@ private val simpleModel: SimpleModel by res("simple.json")
 To use the delegate `res`, add the library below to your project:
 
 ```
-implementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:2.0.0"
+implementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:2.0.1"
 ```
 
 ---
