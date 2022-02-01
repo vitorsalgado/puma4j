@@ -2,40 +2,42 @@ package io.github.vitorsalgado.puma4j.core
 
 import io.github.vitorsalgado.puma4j.annotations.Res
 import io.github.vitorsalgado.puma4j.core.models.SimpleModel
-import org.junit.jupiter.api.Assertions.*
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
 class KotlinSupportTest {
 
-  @Res("simple.json")
-  private val valJson: SimpleModel? = null
-  @Res("simple.json")
-  private lateinit var varJson: SimpleModel
+    @Res("simple.json")
+    private val valJson: SimpleModel? = null
 
-  private val provider: Provider = DefaultResourceProvider()
+    @Res("simple.json")
+    private lateinit var varJson: SimpleModel
 
-  @Test
-  fun `should load resource from annotated fields`() {
-    val context = Context("")
+    private val provider: Provider = DefaultResourceProvider()
 
-    val valJsonResource = provider.provide(
-      Provider.Args.annotatedType(
-        context,
-        KotlinSupportTest::class.java,
-        KotlinSupportTest::class.java.getDeclaredField("valJson")
-      )
-    ) as SimpleModel
+    @Test
+    fun `should load resource from annotated fields`() {
+        val context = Context("")
 
-    val varJsonResource = provider.provide(
-      Provider.Args.annotatedType(
-        context,
-        KotlinSupportTest::class.java,
-        KotlinSupportTest::class.java.getDeclaredField("varJson")
-      )
-    ) as SimpleModel
+        val valJsonResource = provider.provide(
+                Provider.Args.annotatedType(
+                        context,
+                        KotlinSupportTest::class.java,
+                        KotlinSupportTest::class.java.getDeclaredField("valJson")
+                )
+        ) as SimpleModel
 
-    assertNotNull(valJsonResource)
-    assertNotNull(varJsonResource)
-    assertEquals(valJsonResource, varJsonResource)
-  }
+        val varJsonResource = provider.provide(
+                Provider.Args.annotatedType(
+                        context,
+                        KotlinSupportTest::class.java,
+                        KotlinSupportTest::class.java.getDeclaredField("varJson")
+                )
+        ) as SimpleModel
+
+        assertNotNull(valJsonResource)
+        assertNotNull(varJsonResource)
+        assertEquals(valJsonResource, varJsonResource)
+    }
 }

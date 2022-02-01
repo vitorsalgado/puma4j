@@ -1,12 +1,12 @@
 ext.moduleName = 'io.github.vitorsalgado.puma4j.core'
 
 dependencies {
-  implementation libs.jacksonCore
-  implementation libs.jacksonDatabind
-  implementation libs.jacksonParameterNames
-  implementation libs.jacksonJsr310
-  implementation libs.jacksonJdk8
-  implementation libs.jacksonYaml
-  implementation libs.gson
-  implementation libs.jacksonKotlin
+    implementation libs.jacksonCore
+    implementation libs.jacksonDatabind
+    implementation libs.jacksonParameterNames
+    implementation libs.jacksonJsr310
+    implementation libs.jacksonJdk8
+    implementation libs.jacksonYaml
+    implementation libs.gson
+    implementation libs.jacksonKotlin
 }

@@ -25,15 +25,17 @@ public class JsonUnmarshaller implements Unmarshaller<Object> {
   public Object unmarshal(final Args args) throws IOException {
     requireNonNull(args);
 
-    final var useJackson =
+    final boolean useJackson =
         isAnnotationPresent(UseJackson.class, args.getAnnotatedResource(), args.getTestClass());
 
     if (useJackson) {
       return this.objectMapper.readValue(
-          args.getInput(), objectMapper.getTypeFactory().constructType(args.getType()));
+          args.getInput(), objectMapper
+              .getTypeFactory()
+              .constructType(args.getType()));
     }
 
-    final var useGson =
+    final boolean useGson =
         isAnnotationPresent(UseGson.class, args.getAnnotatedResource(), args.getTestClass());
 
     if (useGson) {
@@ -41,6 +43,8 @@ public class JsonUnmarshaller implements Unmarshaller<Object> {
     }
 
     return this.objectMapper.readValue(
-        args.getInput(), objectMapper.getTypeFactory().constructType(args.getType()));
+        args.getInput(), objectMapper
+            .getTypeFactory()
+            .constructType(args.getType()));
   }
 }

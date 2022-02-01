@@ -18,11 +18,15 @@ class DefaultResourceProvider implements Provider {
   public Object provide(final Args args) {
     requireNonNull(args);
 
-    final String resourceName = args.getResourceFilename().orElse("");
+    final String resourceName = args
+        .getResourceFilename()
+        .orElse("");
     final String filename;
 
-    if (resourceName.isBlank()) {
-      final Res res = args.getTargetElement().getAnnotation(Res.class);
+    if (resourceName.isEmpty()) {
+      final Res res = args
+          .getTargetElement()
+          .getAnnotation(Res.class);
       filename = res.value();
     } else {
       filename = resourceName;
@@ -42,21 +46,33 @@ class DefaultResourceProvider implements Provider {
       final Use use = optUse.get();
 
       try {
-        unmarshaller = use.value().getDeclaredConstructor().newInstance();
+        unmarshaller = use
+            .value()
+            .getDeclaredConstructor()
+            .newInstance();
       } catch (final Exception ex) {
-        throw new InvalidMarshallerClassException(use.value().getSimpleName(), ex);
+        throw new InvalidMarshallerClassException(use
+            .value()
+            .getSimpleName(), ex);
       }
     } else {
       if (type.isAssignableFrom(String.class)) {
-        unmarshaller = Puma4j.instance().textMarshaller();
+        unmarshaller = Puma4j
+            .instance()
+            .textMarshaller();
       } else if (type.isAssignableFrom(byte[].class) || type.isAssignableFrom(Byte[].class)) {
-        unmarshaller = Puma4j.instance().binaryMarshaller();
+        unmarshaller = Puma4j
+            .instance()
+            .binaryMarshaller();
       } else if (type.isAssignableFrom(Properties.class)) {
-        unmarshaller = Puma4j.instance().propertiesMarshaller();
+        unmarshaller = Puma4j
+            .instance()
+            .propertiesMarshaller();
       } else {
         if (hasExtension) {
           unmarshaller =
-              Puma4j.instance()
+              Puma4j
+                  .instance()
                   .getMarshallerByExtension(extension)
                   .orElseThrow(() -> newExtNotSupportedException(args, filename, extension));
         } else {
@@ -69,10 +85,14 @@ class DefaultResourceProvider implements Provider {
     }
 
     final String path = Paths
-        .get(args.getContext().getBasePath(), filename)
+        .get(args
+            .getContext()
+            .getBasePath(), filename)
         .toString();
 
-    try (final InputStream input = args.getTestClass().getResourceAsStream(path)) {
+    try (final InputStream input = args
+        .getTestClass()
+        .getResourceAsStream(path)) {
       return unmarshaller.unmarshal(
           new Unmarshaller.Args(
               input,

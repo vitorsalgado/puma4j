@@ -6,8 +6,7 @@ Please, provide a summary about your pull request.
 
 Please check if your PR fulfills the following requirements:
 
-- [ ] The commit message
-  follows **[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)** standard
+- [ ] The commit message follows **[Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/)** standard
 - [ ] The code follows project code style standards
 - [ ] Tests have been added for this change
 - [ ] Docs have been added (if needed)

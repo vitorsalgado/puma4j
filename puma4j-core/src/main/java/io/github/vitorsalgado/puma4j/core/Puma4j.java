@@ -31,7 +31,8 @@ public final class Puma4j {
     final ObjectMapper objectMapperForYaml =
         new ObjectMapper(new YAMLFactory()).findAndRegisterModules();
     final ObjectMapper objectMapperForJson =
-        JsonMapper.builder()
+        JsonMapper
+            .builder()
             .addModule(new ParameterNamesModule())
             .addModule(new Jdk8Module())
             .addModule(new JavaTimeModule())
@@ -45,14 +46,18 @@ public final class Puma4j {
     this.propertiesMarshaller = new PropertiesUnmarshaller();
     this.binaryMarshaller = new BinaryUnmarshaller();
 
-    Arrays.stream(Extensions.JSON)
+    Arrays
+        .stream(Extensions.JSON)
         .forEach(ext -> READER_REGISTRY.registerMarshallerForExtension(ext, this.jsonMarshaller));
-    Arrays.stream(Extensions.PROPERTIES)
+    Arrays
+        .stream(Extensions.PROPERTIES)
         .forEach(
             ext -> READER_REGISTRY.registerMarshallerForExtension(ext, this.propertiesMarshaller));
-    Arrays.stream(Extensions.TEXT)
+    Arrays
+        .stream(Extensions.TEXT)
         .forEach(ext -> READER_REGISTRY.registerMarshallerForExtension(ext, this.textMarshaller));
-    Arrays.stream(Extensions.YML)
+    Arrays
+        .stream(Extensions.YML)
         .forEach(ext -> READER_REGISTRY.registerMarshallerForExtension(ext, this.yamlMarshaller));
   }
 

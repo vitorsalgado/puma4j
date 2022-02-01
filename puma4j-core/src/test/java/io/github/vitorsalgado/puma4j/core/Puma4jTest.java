@@ -1,6 +1,8 @@
 package io.github.vitorsalgado.puma4j.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import io.github.vitorsalgado.puma4j.core.unmarshallers.JsonUnmarshaller;
 import io.github.vitorsalgado.puma4j.core.unmarshallers.YamlUnmarshaller;
@@ -26,18 +28,24 @@ class Puma4jTest {
   @Test
   @DisplayName("should add or replace a marshaller for a specific extension")
   void addMarshallerByExtension() {
-    final var jsonExt = "json";
-    final var unknownExt = "unknown";
+    final String jsonExt = "json";
+    final String unknownExt = "unknown";
 
-    assertInstanceOf(JsonUnmarshaller.class, puma4j.getMarshallerByExtension(jsonExt).orElseThrow());
+    assertInstanceOf(JsonUnmarshaller.class, puma4j
+        .getMarshallerByExtension(jsonExt)
+        .orElseThrow(RuntimeException::new));
 
     puma4j.registerMarshallerForExtension(jsonExt, new CustomJsonUnmarshaller());
     puma4j.registerMarshallerForExtension(unknownExt, new NewUnmarshaller());
 
     assertInstanceOf(
-        CustomJsonUnmarshaller.class, puma4j.getMarshallerByExtension(jsonExt).orElseThrow());
+        CustomJsonUnmarshaller.class, puma4j
+            .getMarshallerByExtension(jsonExt)
+            .orElseThrow(RuntimeException::new));
     assertInstanceOf(
-        NewUnmarshaller.class, puma4j.getMarshallerByExtension(unknownExt).orElseThrow());
+        NewUnmarshaller.class, puma4j
+            .getMarshallerByExtension(unknownExt)
+            .orElseThrow(RuntimeException::new));
   }
 
   @Test
@@ -51,7 +59,9 @@ class Puma4jTest {
   @Test
   @DisplayName("should return the correct marshaller for provided extension")
   void getMarshallerByExt() {
-    assertInstanceOf(YamlUnmarshaller.class, puma4j.getMarshallerByExtension("yaml").orElseThrow());
+    assertInstanceOf(YamlUnmarshaller.class, puma4j
+        .getMarshallerByExtension("yaml")
+        .orElseThrow(RuntimeException::new));
   }
 
   static class CustomJsonUnmarshaller implements Unmarshaller<Object> {

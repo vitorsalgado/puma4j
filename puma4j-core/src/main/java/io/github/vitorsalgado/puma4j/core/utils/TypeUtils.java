@@ -11,8 +11,9 @@ public final class TypeUtils {
 
   public static <T extends Annotation> Optional<T> lookForAnnotation(
       final Class<T> annotation, final AnnotatedElement priority, final Class<?> root) {
-    return Optional.ofNullable(priority.getAnnotation(annotation))
-        .or(() -> Optional.ofNullable(root.getAnnotation(annotation)));
+    return Optional.ofNullable(Optional
+        .ofNullable(priority.getAnnotation(annotation))
+        .orElseGet(() -> root.getAnnotation(annotation)));
   }
 
   public static <T extends Annotation> boolean isAnnotationPresent(

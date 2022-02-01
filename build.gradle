@@ -51,12 +51,12 @@ subprojects {
   apply plugin: "pmd"
   apply from: "${rootDir}/lint.gradle"
 
-  sourceCompatibility = JavaVersion.VERSION_11
-  targetCompatibility = JavaVersion.VERSION_11
+  sourceCompatibility = JavaVersion.VERSION_1_8
+  targetCompatibility = JavaVersion.VERSION_1_8
 
   tasks.withType(JavaCompile) { compileTask ->
-    sourceCompatibility = "11"
-    targetCompatibility = "11"
+    sourceCompatibility = "8"
+    targetCompatibility = "8"
     options.encoding = 'UTF-8'
     options.deprecation = true
     options.compilerArgs += ["-Xlint:-deprecation", "-Xlint:unchecked", "-parameters"]
@@ -127,13 +127,6 @@ task jacocoRootTestReport(type: JacocoReport) {
     xml.destination file(allTestCoverageFile)
     html.required.set true
     csv.required.set false
-  }
-}
-
-idea {
-  project {
-    jdkName = 11
-    languageLevel = 11
   }
 }
 

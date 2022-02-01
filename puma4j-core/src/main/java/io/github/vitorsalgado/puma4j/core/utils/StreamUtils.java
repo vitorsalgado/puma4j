@@ -30,7 +30,9 @@ public final class StreamUtils {
 
     try (final Reader reader = new InputStreamReader(inputStream, UTF_8)) {
       try (final BufferedReader bufferedReader = new BufferedReader(reader)) {
-        return bufferedReader.lines().collect(Collectors.joining(System.lineSeparator()));
+        return bufferedReader
+            .lines()
+            .collect(Collectors.joining(System.lineSeparator()));
       }
     }
   }

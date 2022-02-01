@@ -1,6 +1,8 @@
 package io.github.vitorsalgado.puma4j.core;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import com.google.gson.Gson;
 import io.github.vitorsalgado.puma4j.annotations.Res;
@@ -13,6 +15,7 @@ import io.github.vitorsalgado.puma4j.core.models.ComplexModel;
 import io.github.vitorsalgado.puma4j.core.models.SimpleModel;
 import io.github.vitorsalgado.puma4j.core.utils.StreamUtils;
 import java.io.IOException;
+import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Properties;
 import org.junit.jupiter.api.DisplayName;
@@ -20,6 +23,7 @@ import org.junit.jupiter.api.Test;
 
 class ResourceProviderTest {
 
+  private final Provider provider = new DefaultResourceProvider();
   @Res("no_extension")
   private SimpleModel noExtension;
   @Res("no_extension")
@@ -62,14 +66,12 @@ class ResourceProviderTest {
   @Res("complex.xml")
   private List<ComplexDataModel> complexXml;
 
-  private final Provider provider = new DefaultResourceProvider();
-
   @Test
   @DisplayName("should use marshaller from @Use to load extensionless file")
   void noExtensionWithCustomMarshaller() throws NoSuchFieldException {
-    final var context = new Context("/");
+    final Context context = new Context("/");
 
-    final var resource =
+    final SimpleModel resource =
         (SimpleModel)
             provider.provide(
                 Args.annotatedType(
@@ -85,9 +87,9 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should read text resource")
   void textResource() throws NoSuchFieldException {
-    final var context = new Context("");
+    final Context context = new Context("");
 
-    final var resource =
+    final String resource =
         (String)
             provider.provide(
                 Args.annotatedType(
@@ -101,16 +103,16 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should read text resource to byte array when type byte[] or Byte[]")
   void textResToBytes() throws NoSuchFieldException {
-    final var context = new Context("/");
+    final Context context = new Context("/");
 
-    final var byteArr =
+    final byte[] byteArr =
         (byte[])
             provider.provide(
                 Args.annotatedType(
                     context,
                     ResourceProviderTest.class,
                     ResourceProviderTest.class.getDeclaredField("textResToBytes")));
-    final var byteTypeArr =
+    final byte[] byteTypeArr =
         (byte[])
             provider.provide(
                 Args.annotatedType(
@@ -126,9 +128,9 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should read properties resource")
   void propertiesResource() throws NoSuchFieldException {
-    final var context = new Context("");
+    final Context context = new Context("");
 
-    final var resource =
+    final Properties resource =
         (Properties)
             provider.provide(
                 Args.annotatedType(
@@ -143,9 +145,9 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should read simple json resource with the default unmarshaller")
   void readJson() throws NoSuchFieldException {
-    final var context = new Context("");
+    final Context context = new Context("");
 
-    final var resource =
+    final SimpleModel resource =
         (SimpleModel)
             provider.provide(
                 Args.annotatedType(
@@ -160,9 +162,9 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should read simple json resource with Gson")
   void readJsonWithGson() throws NoSuchFieldException {
-    final var context = new Context("");
+    final Context context = new Context("");
 
-    final var resource =
+    final SimpleModel resource =
         (SimpleModel)
             provider.provide(
                 Args.annotatedType(
@@ -177,9 +179,9 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should read simple json resource with Jackson Object Mapper")
   void readJsonWithJackson() throws NoSuchFieldException {
-    final var context = new Context("");
+    final Context context = new Context("");
 
-    final var resource =
+    final SimpleModel resource =
         (SimpleModel)
             provider.provide(
                 Args.annotatedType(
@@ -194,9 +196,9 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should read simple yaml resource")
   void readSimpleYamlFile() throws NoSuchFieldException {
-    final var context = new Context("");
+    final Context context = new Context("");
 
-    final var resource =
+    final SimpleModel resource =
         (SimpleModel)
             provider.provide(
                 Args.annotatedType(
@@ -210,11 +212,12 @@ class ResourceProviderTest {
 
   @Test
   @DisplayName("should read complex json resource with Gson")
+  @SuppressWarnings("unchecked")
   void readComplexJsonWithGson() throws NoSuchFieldException {
-    final var context = new Context("");
-    final var field = ResourceProviderTest.class.getDeclaredField("complexJsonUsingGson");
+    final Context context = new Context("");
+    final Field field = ResourceProviderTest.class.getDeclaredField("complexJsonUsingGson");
 
-    final var resource =
+    final List<ComplexModel> resource =
         (List<ComplexModel>)
             provider.provide(
                 Args.annotatedType(
@@ -224,20 +227,23 @@ class ResourceProviderTest {
 
     assertEquals(1, resource.size());
 
-    final var model = resource.get(0);
+    final ComplexModel model = resource.get(0);
 
     assertEquals(100, model.getId());
     assertEquals("test", model.getTest());
-    assertEquals("name", model.getInner().getName());
+    assertEquals("name", model
+        .getInner()
+        .getName());
   }
 
   @Test
   @DisplayName("should read complex json resource with Jackson Object Mapper")
+  @SuppressWarnings("unchecked")
   void readComplexJsonWithJackson() throws NoSuchFieldException {
-    final var context = new Context("");
-    final var field = ResourceProviderTest.class.getDeclaredField("complexJsonUsingJackson");
+    final Context context = new Context("");
+    final Field field = ResourceProviderTest.class.getDeclaredField("complexJsonUsingJackson");
 
-    final var resource =
+    final List<ComplexModel> resource =
         (List<ComplexModel>)
             provider.provide(
                 Args.annotatedType(
@@ -247,20 +253,23 @@ class ResourceProviderTest {
 
     assertEquals(1, resource.size());
 
-    final var model = resource.get(0);
+    final ComplexModel model = resource.get(0);
 
     assertEquals(100, model.getId());
     assertEquals("test", model.getTest());
-    assertEquals("name", model.getInner().getName());
+    assertEquals("name", model
+        .getInner()
+        .getName());
   }
 
   @Test
   @DisplayName("should read complex yaml resource")
+  @SuppressWarnings("unchecked")
   void readComplexYamlFile() throws NoSuchFieldException {
-    final var context = new Context("");
-    final var field = ResourceProviderTest.class.getDeclaredField("complexYaml");
+    final Context context = new Context("");
+    final Field field = ResourceProviderTest.class.getDeclaredField("complexYaml");
 
-    final var resource =
+    final List<ComplexDataModel> resource =
         (List<ComplexDataModel>)
             provider.provide(
                 Args.annotatedType(
@@ -270,11 +279,13 @@ class ResourceProviderTest {
 
     assertEquals(1, resource.size());
 
-    final var model = resource.get(0);
+    final ComplexDataModel model = resource.get(0);
 
     assertEquals(100, model.getId());
     assertEquals("test", model.getTest());
-    assertEquals("name", model.getInner().getName());
+    assertEquals("name", model
+        .getInner()
+        .getName());
   }
 
   // region Failure Scenarios
@@ -282,7 +293,7 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should fail when resource has no extension and no marshaller was set with @Use")
   void noExtensionAndNoCustomMarshaller() {
-    final var context = new Context("");
+    final Context context = new Context("");
 
     assertThrows(
         NoMarshallerException.class,
@@ -297,7 +308,7 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should fail when @Use has a class type without an arg-less constructor")
   void customMarshallerWithoutArgLessConstructor() {
-    final var context = new Context("");
+    final Context context = new Context("");
 
     assertThrows(
         InvalidMarshallerClassException.class,
@@ -312,7 +323,7 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should fail with specific exception type when marshaller throws any error")
   void failingMarshaller() {
-    final var context = new Context("");
+    final Context context = new Context("");
 
     assertThrows(
         UnmarshallingException.class,
@@ -327,7 +338,7 @@ class ResourceProviderTest {
   @Test
   @DisplayName("should fail with specific exception type when marshaller throws any error")
   void noUnmarshallerForExtension() {
-    final var context = new Context("");
+    final Context context = new Context("");
 
     assertThrows(
         ExtensionNotSupportedException.class,
@@ -341,7 +352,7 @@ class ResourceProviderTest {
 
   // endregion
 
-  // region Test Marshallers
+  // region Test Marshaller
 
   static class CustomJsonUnmarshaller implements Unmarshaller<Object> {
 

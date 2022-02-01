@@ -1,19 +1,20 @@
 package org.example.juni5;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.vitorsalgado.puma4j.annotations.Res;
 import io.github.vitorsalgado.puma4j.annotations.Use;
 import io.github.vitorsalgado.puma4j.core.Unmarshaller;
 import io.github.vitorsalgado.puma4j.junit5.UsePuma4j;
-import java.io.IOException;
-import java.util.List;
-import java.util.Properties;
 import org.example.models.ComplexModel;
 import org.example.models.SimpleModel;
 import org.junit.jupiter.api.Test;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Properties;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @UsePuma4j
 class UsageWithJUnit5Test {
