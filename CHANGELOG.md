@@ -2,6 +2,39 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/vitorsalgado/puma4j/compare/v2.0.1...v3.0.0) (2022-02-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* changed min java version to 8
+
+### Refactor
+
+* move to java 8 ([c9db608](https://github.com/vitorsalgado/puma4j/commit/c9db608bea748c6575c55580bede22ee6fda6a29))
+
+
+### Docs
+
+* fix typos and java version ref ([a49ea9d](https://github.com/vitorsalgado/puma4j/commit/a49ea9d431d40a4c57cf03eced92a72c0194e775))
+
+
+### Build
+
+* add commitlint + husky + makefile ([9f057c9](https://github.com/vitorsalgado/puma4j/commit/9f057c99ee23c8980545f1c771b272469a3e0307))
+* add owasp dependency check ([9ee6c75](https://github.com/vitorsalgado/puma4j/commit/9ee6c753a2c0a18a98ceda3de5638f219cd09ee5))
+* add package.json for release scripts + update gitignore + update standard-version config ([ce6791c](https://github.com/vitorsalgado/puma4j/commit/ce6791c001e7b6149f7ef4c7820dab16b82c337f))
+* add release command to makefile ([e2c64c1](https://github.com/vitorsalgado/puma4j/commit/e2c64c1dfed94eebd68d3df350298ac8166f31ab))
+* add script to get last changelog entry ([dc2ee3a](https://github.com/vitorsalgado/puma4j/commit/dc2ee3a669f5b460aa30ae1cd4d8f89a07244dc9))
+* **ci:** change ci to use java 8 ([3b055aa](https://github.com/vitorsalgado/puma4j/commit/3b055aa6e6da87a32ba2d93c636cf8a731d56049))
+* **ci:** java 11 ([bc84a04](https://github.com/vitorsalgado/puma4j/commit/bc84a04be8645ed8236d8309c7999aaa6c9c81ab))
+* **ci:** java 11 ([5eba87a](https://github.com/vitorsalgado/puma4j/commit/5eba87a88f4d935a0f4dd4f8597daa868d6c055b))
+* **ci:** remove win ([5f62e89](https://github.com/vitorsalgado/puma4j/commit/5f62e891ffb4e79b3466450f93a675433472af00))
+* **ci:** trying to run on win also ([f9612fa](https://github.com/vitorsalgado/puma4j/commit/f9612fa3ff16d7f5c19b350cf6c3d1c4d9c30c64))
+* **deps:** bump versions.jackson from 2.13.0 to 2.13.1 ([#29](https://github.com/vitorsalgado/puma4j/issues/29)) ([138d4d2](https://github.com/vitorsalgado/puma4j/commit/138d4d23f7e42ba1990aa615c0428b953fb380fd))
+* remove unused gradle util ([cb67787](https://github.com/vitorsalgado/puma4j/commit/cb67787ece1c3d41862ee226e4df490b613138c4))
+* upgrade gradle to 7.3.3 ([eb18e88](https://github.com/vitorsalgado/puma4j/commit/eb18e88d1e67d0268b55f8369af605e5aaf290c5))
+
 ### [2.0.1](https://github.com/vitorsalgado/puma4j/compare/v2.0.0...v2.0.1) (2021-12-20)
 
 ## [2.0.0](https://github.com/vitorsalgado/puma4j/compare/v1.0.0...v2.0.0) (2021-12-03)
