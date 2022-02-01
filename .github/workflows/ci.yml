@@ -18,11 +18,7 @@ on:
 
 jobs:
   test:
-    name: Running on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ ubuntu-latest, windows-latest ]
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -54,7 +50,7 @@ jobs:
           gradle jacocoRootTestReport
 
       - name: Sonar
-        if: matrix.os == 'ubuntu-latest'
+        if: github.ref == 'refs/heads/main'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -62,7 +58,7 @@ jobs:
           gradle sonarqube --info
 
       - name: Coverage
-        if: matrix.os == 'ubuntu-latest'
+        if: github.ref == 'refs/heads/main'
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
