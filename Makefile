@@ -7,3 +7,7 @@ help: ## show help
 prepare: ## prepare development environment
 	@npm i
 	@npx husky install
+
+.PHONY: release
+release: ## generate a new release
+	@npm run release
