@@ -29,12 +29,5 @@ libs.gson = "com.google.code.gson:gson:${versions.gson}"
 libs.kotlinStdLib = "org.jetbrains.kotlin:kotlin-stdlib"
 libs.kotlinReflection = "org.jetbrains.kotlin:kotlin-reflect"
 
-// Utils
-// --
-static def addRepos(final handler) {
-  handler.mavenCentral()
-}
-
 ext.versions = versions
 ext.libs = libs
-ext.addRepos = this.&addRepos
