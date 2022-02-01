@@ -26,12 +26,11 @@
 
 ## Overview
 
-Puma4j provides a convenient and much easier way to load and parse file resources in your tests
-using just a couple of **@annotations** :)
+Puma4j provides a convenient and easier way to load and parse file resources in your **JUnit 5** tests using just a couple of **annotations** :)
 
 ## Download
 
-![Java 11](docs/assets/java.svg)
+![Java 8](docs/assets/java.svg)
 
 Using Gradle:
 
@@ -51,23 +50,21 @@ or Maven:
 
 ## How It Works
 
-**Puma4j**, when enabled, detects fields or parameters annotated with `@Res` and inject resource
-values based on annotated element type, resource extension and any custom unmarshaller added.  
+**Puma4j**, when enabled, detects fields or parameters annotated with `@Res` and inject resource values based on annotated element type, resource extension and
+any custom unmarshaller added.  
 You can use `String` and `byte[]` for all types of resources.  
 Puma4j is also able to convert some resource types to object type representations:
 
-- Json: Object types based on the json structure. It uses **ObjectMapper** and **Gson**. Defaults
-  to **ObjectMapper**
-- Yaml: Object types based on yaml structure. It uses **ObjectMapper**.
+- Json: Object types based on the json structure. It uses **Jackson ObjectMapper** and **Gson**. Defaults to **Jackson ObjectMapper**
+- Yaml: Object types based on yaml structure. It uses **Jackson ObjectMapper**.
 - Properties: Converts `.properties` files to java `Properties` class.
 
-For custom **object conversions** use a custom **unmarshaller** using the annotation `@Use`, passing
-the class type of your custom unmarshaller implementation.
+For custom **object conversions** use a custom **unmarshaller** using the annotation `@Use`, passing the class type of your custom unmarshaller implementation.
 
 ## Usage
 
-First, annotated your JUnit5 test classes with `@UsePuma4j`. Now you can use the annotation `@Res`
-to inject resources on class fields and method parameters.  
+First, annotate your JUnit 5 test classes with `@UsePuma4j`. Now you can use the annotation `@Res`
+to inject resources on class fields and/or method parameters.  
 Take a look on the complete example below:
 
 ```
@@ -112,16 +109,14 @@ class UsageWithJUnit5 {
 
 ### Forcing Jackson or Gson
 
-For **json** files, the default parser is **Jackson Object Mapper**. If you want to use Gson for a
-specific type use: `@UseGson`. If applied in the class level, all json conversions will use Gson.
-You can use `@UseJackson` to keep using Object Mapper on specific resources.
+For **json** files, the default parser is **Jackson ObjectMapper**. If you want to use **Gson** for a specific type use: `@UseGson`. If applied in the class
+level, all json conversions will use Gson. You can use `@UseJackson` to keep using Object Mapper on specific resources.
 
 ### Custom Unmarshaller
 
-You can your on **unmarshaller** implementation.  
+You can use your custom **unmarshaller** implementation.  
 First, create a new class implementing the interface `Unmarshaller<O>`.  
-Then, use the annotation `@Use(YourCustomUnmarshaller.class)` on the class, field or method level to
-use your new custom component.
+Then, use the annotation `@Use(YourCustomUnmarshaller.class)` on the class, field or method level to use your new custom unmarshaller.
 
 ### Kotlin Delegate
 
