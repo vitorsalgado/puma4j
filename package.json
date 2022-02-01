@@ -3,7 +3,9 @@
   "version": "2.0.1",
   "description": "Puma4j Support Scripts",
   "scripts": {
-    "release": "standard-version --commit-all"
+    "release": "standard-version --commit-all",
+    "prepare": "husky install",
+    "postinstall": "husky install"
   },
   "repository": {
     "type": "git",
@@ -16,6 +18,9 @@
   },
   "homepage": "https://github.com/vitorsalgado/puma4j#readme",
   "dependencies": {
+    "@commitlint/cli": "^16.1.0",
+    "@commitlint/config-conventional": "^16.0.0",
+    "husky": "^7.0.4",
     "standard-version": "^9.3.2"
   }
 }
