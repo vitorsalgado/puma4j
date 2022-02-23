@@ -1,6 +1,6 @@
 {
   "name": "puma4j",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Puma4j Support Scripts",
   "scripts": {
     "release": "standard-version --commit-all",

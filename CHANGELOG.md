@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.1](https://github.com/vitorsalgado/puma4j/compare/v3.0.0...v3.0.1) (2022-02-23)
+
+
+### Build
+
+* **deps:** bump gson from 2.8.9 to 2.9.0 ([#30](https://github.com/vitorsalgado/puma4j/issues/30)) ([69ddcb1](https://github.com/vitorsalgado/puma4j/commit/69ddcb1866ef25f77c20ea4933e8baabc4038796))
+
+
+### Docs
+
+* fix installing scope ([174c71b](https://github.com/vitorsalgado/puma4j/commit/174c71bc2b37ac90e3b9df7cbc7fa609254a3fff))
+* update version ([48cb491](https://github.com/vitorsalgado/puma4j/commit/48cb4919e3b657a8d120f7a30cdd7a8b30e0bcf5))
+
 ## [3.0.0](https://github.com/vitorsalgado/puma4j/compare/v2.0.1...v3.0.0) (2022-02-01)
 
 
