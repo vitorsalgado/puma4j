@@ -35,7 +35,7 @@ Puma4j provides a convenient and easier way to load and parse file resources in 
 Using Gradle:
 
 ```
-implementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:3.0.0"
+testImplementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:3.0.0"
 ```
 
 or Maven:
@@ -45,6 +45,7 @@ or Maven:
   <groupId>io.github.vitorsalgado.puma4j</groupId>
   <artifactId>puma4j-junit5-extension</artifactId>
   <version>3.0.0</version>
+  <scope>test</scope>
 </dependency>
 ```
 
@@ -129,7 +130,7 @@ private val simpleModel: SimpleModel by res("simple.json")
 To use the delegate `res`, add the library below to your project:
 
 ```
-implementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:3.0.0"
+testImplementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:3.0.0"
 ```
 
 ---
