@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.0.2](https://github.com/vitorsalgado/puma4j/compare/v3.0.1...v3.0.2) (2022-02-24)
+
+
+### Refactor
+
+* remove object mapper kotlin module from core ([0a7886e](https://github.com/vitorsalgado/puma4j/commit/0a7886e8765917e42463963d4fa42dc2b2d0b7c6))
+
+
+### Build
+
+* **deps:** bump actions/setup-node from 2 to 3.0.0 ([#31](https://github.com/vitorsalgado/puma4j/issues/31)) ([80b233a](https://github.com/vitorsalgado/puma4j/commit/80b233adb39a7cb3e42d1f710fa2468fcebfb234))
+
 ### [3.0.1](https://github.com/vitorsalgado/puma4j/compare/v3.0.0...v3.0.1) (2022-02-23)
 
 
