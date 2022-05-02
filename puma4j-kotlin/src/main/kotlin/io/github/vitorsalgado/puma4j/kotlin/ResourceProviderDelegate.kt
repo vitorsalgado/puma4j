@@ -7,6 +7,7 @@ import kotlin.reflect.KProperty
 import kotlin.reflect.jvm.javaGetter
 
 class ResourceProviderDelegate<in R : Any, T>(private val resource: String) {
+  @Suppress("UNCHECKED_CAST")
   operator fun getValue(thisRef: R, property: KProperty<*>): T {
     val context = Context("")
     val provider = Puma4j.instance().resourceProvider()
@@ -20,5 +21,6 @@ class ResourceProviderDelegate<in R : Any, T>(private val resource: String) {
   }
 
   operator fun setValue(thisRef: R, property: KProperty<*>, value: T) {
+    // The setter doesn't need to be implemented in this context.
   }
 }
