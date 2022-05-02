@@ -12,6 +12,7 @@ LinkedHashMap<Object, String> libs = [:]
 // --
 versions.junitJupiter = "5.8.2"
 versions.jackson = "2.13.2"
+versions.jacksonDatabind = "2.13.2.2"
 versions.gson = "2.9.0"
 
 // Dependencies
@@ -19,7 +20,7 @@ versions.gson = "2.9.0"
 libs.junitJupiterApi = "org.junit.jupiter:junit-jupiter-api:${versions.junitJupiter}"
 libs.junitJupiterEngine = "org.junit.jupiter:junit-jupiter-engine:${versions.junitJupiter}"
 libs.jacksonCore = "com.fasterxml.jackson.core:jackson-core:${versions.jackson}"
-libs.jacksonDatabind = "com.fasterxml.jackson.core:jackson-databind:${versions.jackson}"
+libs.jacksonDatabind = "com.fasterxml.jackson.core:jackson-databind:${versions.jacksonDatabind}"
 libs.jacksonParameterNames = "com.fasterxml.jackson.module:jackson-module-parameter-names:${versions.jackson}"
 libs.jacksonJsr310 = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${versions.jackson}"
 libs.jacksonJdk8 = "com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${versions.jackson}"
