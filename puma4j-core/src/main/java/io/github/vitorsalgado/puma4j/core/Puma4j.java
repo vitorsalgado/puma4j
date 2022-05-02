@@ -7,11 +7,13 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import com.google.gson.Gson;
+import io.github.vitorsalgado.puma4j.annotations.Res;
 import io.github.vitorsalgado.puma4j.core.unmarshallers.BinaryUnmarshaller;
 import io.github.vitorsalgado.puma4j.core.unmarshallers.JsonUnmarshaller;
 import io.github.vitorsalgado.puma4j.core.unmarshallers.PropertiesUnmarshaller;
 import io.github.vitorsalgado.puma4j.core.unmarshallers.TextUnmarshaller;
 import io.github.vitorsalgado.puma4j.core.unmarshallers.YamlUnmarshaller;
+import java.lang.reflect.AnnotatedElement;
 import java.util.Arrays;
 import java.util.Optional;
 
@@ -62,6 +64,10 @@ public final class Puma4j {
     return Puma4jSingleton.INSTANCE;
   }
 
+  public static boolean isResourceAnnotationPresent(final AnnotatedElement annotatedElement) {
+    return annotatedElement.isAnnotationPresent(Res.class);
+  }
+
   public Provider resourceProvider() {
     return new DefaultResourceProvider();
   }
@@ -71,27 +77,28 @@ public final class Puma4j {
     READER_REGISTRY.registerMarshallerForExtension(extension, unmarshaller);
   }
 
+  @SuppressWarnings("squid:S1452")
   public Optional<Unmarshaller<?>> getMarshallerByExtension(final String extension) {
     return READER_REGISTRY.getMarshallerByExtension(extension);
   }
 
-  public Unmarshaller<?> jsonMarshaller() {
+  public JsonUnmarshaller jsonMarshaller() {
     return this.jsonMarshaller;
   }
 
-  public Unmarshaller<?> yamlMarshaller() {
+  public YamlUnmarshaller yamlMarshaller() {
     return this.yamlMarshaller;
   }
 
-  public Unmarshaller<?> propertiesMarshaller() {
+  public PropertiesUnmarshaller propertiesMarshaller() {
     return this.propertiesMarshaller;
   }
 
-  public Unmarshaller<?> textMarshaller() {
+  public TextUnmarshaller textMarshaller() {
     return this.textMarshaller;
   }
 
-  public Unmarshaller<?> binaryMarshaller() {
+  public BinaryUnmarshaller binaryMarshaller() {
     return this.binaryMarshaller;
   }
 

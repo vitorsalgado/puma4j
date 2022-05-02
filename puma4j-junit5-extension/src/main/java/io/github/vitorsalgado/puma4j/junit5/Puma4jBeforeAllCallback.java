@@ -1,5 +1,7 @@
 package io.github.vitorsalgado.puma4j.junit5;
 
+import static io.github.vitorsalgado.puma4j.core.Puma4j.isResourceAnnotationPresent;
+
 import io.github.vitorsalgado.puma4j.annotations.Res;
 import io.github.vitorsalgado.puma4j.core.Context;
 import io.github.vitorsalgado.puma4j.core.Provider;
@@ -23,7 +25,7 @@ public class Puma4jBeforeAllCallback implements BeforeAllCallback {
 
     for (final Field field : extensionContext.getRequiredTestClass().getDeclaredFields()) {
       if (Modifier.isStatic(field.getModifiers())
-          && field.isAnnotationPresent(Res.class)
+          && isResourceAnnotationPresent(field)
           && !Modifier.isFinal(field.getModifiers())
           && !field.isEnumConstant()
           && !field.isSynthetic()) {

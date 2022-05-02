@@ -1,5 +1,7 @@
 package io.github.vitorsalgado.puma4j.junit5;
 
+import static io.github.vitorsalgado.puma4j.core.Puma4j.isResourceAnnotationPresent;
+
 import io.github.vitorsalgado.puma4j.annotations.Res;
 import io.github.vitorsalgado.puma4j.core.Context;
 import io.github.vitorsalgado.puma4j.core.Provider;
@@ -18,7 +20,7 @@ public class Puma4jResourceParameterResolver implements ParameterResolver {
   @Override
   public boolean supportsParameter(
       final ParameterContext parameterContext, final ExtensionContext extensionContext) {
-    return parameterContext.getParameter().isAnnotationPresent(Res.class);
+    return isResourceAnnotationPresent(parameterContext.getParameter());
   }
 
   @Override
