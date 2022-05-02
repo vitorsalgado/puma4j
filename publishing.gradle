@@ -13,7 +13,7 @@ def projectUrl = "https://github.com/vitorsalgado/puma4j/blob/main/README.md"
 jar {
   manifest {
     attributes(
-        'Built-By': 'vitorsalgado & smunoz2',
+        'Built-By': 'vitorsalgado',
         'Created-By': System.properties['java.version'] + " (" + System.properties['java.vendor'] + " " + System.properties['java.vm.version'] + ")",
         'Build-Date': project.buildDate,
         'Build-Time': project.buildTime,
@@ -50,7 +50,6 @@ publishing {
       from components.java
       pom.withXml {
         def devs = [
-            'smunoz2'     : 'Sebastián Muñoz Eyquem',
             'vitorsalgado': 'Vitor Hugo Salgado',
         ]
         def root = asNode()
