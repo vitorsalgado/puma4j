@@ -2,6 +2,43 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [4.0.0](https://github.com/vitorsalgado/puma4j/compare/v3.0.2...v4.0.0) (2022-05-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* jackson modules will no longer be automatically registered
+
+### Build
+
+* **deps:** bump actions/cache from 2.1.7 to 3 ([#35](https://github.com/vitorsalgado/puma4j/issues/35)) ([403f662](https://github.com/vitorsalgado/puma4j/commit/403f662b3bacc8296ed48b7230c45d98d51877c0))
+* **deps:** bump actions/checkout from 2 to 3 ([#33](https://github.com/vitorsalgado/puma4j/issues/33)) ([c0f840c](https://github.com/vitorsalgado/puma4j/commit/c0f840c85ea7b434956b7ec15b729ba3a823352e))
+* **deps:** bump actions/setup-java from 2 to 3 ([#43](https://github.com/vitorsalgado/puma4j/issues/43)) ([6da6669](https://github.com/vitorsalgado/puma4j/commit/6da6669bd2c26b288bd860d651bafd33c4385b7f))
+* **deps:** bump actions/setup-node from 3.0.0 to 3.1.0 ([#40](https://github.com/vitorsalgado/puma4j/issues/40)) ([dd98fbf](https://github.com/vitorsalgado/puma4j/commit/dd98fbfd163d64696b4bff633344dc4c0dae8732))
+* **deps:** bump actions/setup-node from 3.1.0 to 3.1.1 ([#45](https://github.com/vitorsalgado/puma4j/issues/45)) ([789729e](https://github.com/vitorsalgado/puma4j/commit/789729ece0aa2c6b59b00a7b37db2a6f3b6552ac))
+* **deps:** bump fastify/github-action-merge-dependabot ([#46](https://github.com/vitorsalgado/puma4j/issues/46)) ([846a862](https://github.com/vitorsalgado/puma4j/commit/846a862ca2e0cb82c38f19c83e1cfed0460b48ef))
+* **deps:** bump fastify/github-action-merge-dependabot ([#47](https://github.com/vitorsalgado/puma4j/issues/47)) ([b52a810](https://github.com/vitorsalgado/puma4j/commit/b52a810c1335a639bb08e2a8e60fd815c1d35f4d))
+* **deps:** bump fastify/github-action-merge-dependabot ([#48](https://github.com/vitorsalgado/puma4j/issues/48)) ([d19b7e9](https://github.com/vitorsalgado/puma4j/commit/d19b7e93190197b19344b749ad6052c88ee99ceb))
+* **deps:** bump fastify/github-action-merge-dependabot ([#50](https://github.com/vitorsalgado/puma4j/issues/50)) ([0ebc239](https://github.com/vitorsalgado/puma4j/commit/0ebc239ededbba4ab5972f249aad4d69f77fe850))
+* **deps:** bump github/codeql-action from 1 to 2 ([#51](https://github.com/vitorsalgado/puma4j/issues/51)) ([72c1004](https://github.com/vitorsalgado/puma4j/commit/72c1004b4e8ac3408d71da0581a8624aeecb8045))
+* **deps:** bump org.jetbrains.kotlin.jvm from 1.6.10 to 1.6.20 ([#39](https://github.com/vitorsalgado/puma4j/issues/39)) ([7686b5d](https://github.com/vitorsalgado/puma4j/commit/7686b5db0cec2ca984c7bf6470dc5928d3dcf1b7))
+* **deps:** bump org.jetbrains.kotlin.jvm from 1.6.20 to 1.6.21 ([#49](https://github.com/vitorsalgado/puma4j/issues/49)) ([c048653](https://github.com/vitorsalgado/puma4j/commit/c048653d0a11093cd3911aea3af67b4d4f178a25))
+* **deps:** bump org.owasp.dependencycheck from 6.5.3 to 7.0.0 ([#32](https://github.com/vitorsalgado/puma4j/issues/32)) ([fcd01cb](https://github.com/vitorsalgado/puma4j/commit/fcd01cb3011aeae96cfb9522bbd73b7a2a6450bc))
+* **deps:** bump org.owasp.dependencycheck from 7.0.0 to 7.0.1 ([#36](https://github.com/vitorsalgado/puma4j/issues/36)) ([23c9072](https://github.com/vitorsalgado/puma4j/commit/23c9072d16681b28b433fa702043be27ef9a78fd))
+* **deps:** bump org.owasp.dependencycheck from 7.0.1 to 7.0.3 ([#38](https://github.com/vitorsalgado/puma4j/issues/38)) ([84ef532](https://github.com/vitorsalgado/puma4j/commit/84ef53270219a8835a31641dd6a9aec17c016e5f))
+* **deps:** bump org.owasp.dependencycheck from 7.0.3 to 7.0.4.1 ([#41](https://github.com/vitorsalgado/puma4j/issues/41)) ([e2523a7](https://github.com/vitorsalgado/puma4j/commit/e2523a770ab5f658865db8766cb6321276b12602))
+* **deps:** bump org.owasp.dependencycheck from 7.0.4.1 to 7.1.0.1 ([#52](https://github.com/vitorsalgado/puma4j/issues/52)) ([fff3c21](https://github.com/vitorsalgado/puma4j/commit/fff3c216a7250ca7044ad4f67103cb585c26b83c))
+* **deps:** bump versions.jackson from 2.13.1 to 2.13.2 ([#34](https://github.com/vitorsalgado/puma4j/issues/34)) ([a5f8af4](https://github.com/vitorsalgado/puma4j/commit/a5f8af48e30eee00be8e84a2445309173b382eff))
+* remove devs ([b9460c0](https://github.com/vitorsalgado/puma4j/commit/b9460c050e375f8fa21c092f4521d04839a61de1))
+
+
+### Refactor
+
+* adjust kotlin resource provider ([31b45ae](https://github.com/vitorsalgado/puma4j/commit/31b45ae51160e7141d6a1aed6b64588051857664))
+* move annotation presence check to core ([c81907d](https://github.com/vitorsalgado/puma4j/commit/c81907dd78c4cdf39acc5e0b12a01864cf002952))
+* remove auto module registration ([3e6b52e](https://github.com/vitorsalgado/puma4j/commit/3e6b52eec16b9eeab922dac18c088e1610eb97ef))
+* update jackson databind to fix security issue ([788ca95](https://github.com/vitorsalgado/puma4j/commit/788ca951517d6bf0da15b13bfc0829a92a8e17e6))
+
 ### [3.0.2](https://github.com/vitorsalgado/puma4j/compare/v3.0.1...v3.0.2) (2022-02-24)
 
 
