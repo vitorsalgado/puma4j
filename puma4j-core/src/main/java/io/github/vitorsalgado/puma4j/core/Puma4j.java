@@ -28,14 +28,13 @@ public final class Puma4j {
   Puma4j() {
     final Gson gson = new Gson();
     final ObjectMapper objectMapperForYaml =
-        new ObjectMapper(new YAMLFactory()).findAndRegisterModules();
+        new ObjectMapper(new YAMLFactory()).registerModule(new ParameterNamesModule());
     final ObjectMapper objectMapperForJson =
         JsonMapper
             .builder()
             .addModule(new ParameterNamesModule())
             .addModule(new Jdk8Module())
             .addModule(new JavaTimeModule())
-            .findAndAddModules()
             .build();
 
     this.jsonMarshaller = new JsonUnmarshaller(gson, objectMapperForJson);
