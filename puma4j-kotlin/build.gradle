@@ -1,8 +1,8 @@
+ext.moduleName = 'io.github.vitorsalgado.puma4j.kotlin'
+
 dependencies {
   api project(":puma4j-core")
 
   implementation libs.kotlinStdLib
   implementation libs.kotlinReflection
 }
-
-ext.moduleName = 'io.github.vitorsalgado.puma4j.kotlin'
