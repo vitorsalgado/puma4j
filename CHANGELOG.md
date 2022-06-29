@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.1](https://github.com/vitorsalgado/puma4j/compare/v4.0.0...v4.0.1) (2022-06-29)
+
+
+### Docs
+
+* change latest version on README.md ([d16ed01](https://github.com/vitorsalgado/puma4j/commit/d16ed01d8003d26da8d38158b4fe157132586114))
+
+
+### Build
+
+* **deps:** bump actions/setup-node from 3.1.1 to 3.2.0 ([#57](https://github.com/vitorsalgado/puma4j/issues/57)) ([e16a24f](https://github.com/vitorsalgado/puma4j/commit/e16a24ff3eb53e162a2c78ec2472b2769ef98d3a))
+* **deps:** bump actions/setup-node from 3.2.0 to 3.3.0 ([#60](https://github.com/vitorsalgado/puma4j/issues/60)) ([db3475b](https://github.com/vitorsalgado/puma4j/commit/db3475b9789a0eeecbf29cb90beff685126d4392))
+* **deps:** bump fastify/github-action-merge-dependabot ([#53](https://github.com/vitorsalgado/puma4j/issues/53)) ([d1aef68](https://github.com/vitorsalgado/puma4j/commit/d1aef68b4c14f8fd5393e60087957b302d4fe2aa))
+* **deps:** bump fastify/github-action-merge-dependabot ([#55](https://github.com/vitorsalgado/puma4j/issues/55)) ([ed0b85e](https://github.com/vitorsalgado/puma4j/commit/ed0b85e40d2e809484a7933e9a7d67854c9752b7))
+* **deps:** bump fastify/github-action-merge-dependabot ([#58](https://github.com/vitorsalgado/puma4j/issues/58)) ([a52544e](https://github.com/vitorsalgado/puma4j/commit/a52544ed099e95dd3c8a8c925c6b11f65456235e))
+* **deps:** bump fastify/github-action-merge-dependabot ([#59](https://github.com/vitorsalgado/puma4j/issues/59)) ([9c876f5](https://github.com/vitorsalgado/puma4j/commit/9c876f5c21205738476c345d94e507afb9727314))
+* **deps:** bump jackson-databind from 2.13.2.2 to 2.13.3 ([#56](https://github.com/vitorsalgado/puma4j/issues/56)) ([6ae24da](https://github.com/vitorsalgado/puma4j/commit/6ae24da32b43366f26ca2268514c2b3a4fd4bd98))
+* **deps:** bump org.jetbrains.kotlin.jvm from 1.6.21 to 1.7.0 ([#61](https://github.com/vitorsalgado/puma4j/issues/61)) ([51f70f4](https://github.com/vitorsalgado/puma4j/commit/51f70f40afcec16ddc50ac3f5e033eaa0910b1cd))
+* **deps:** bump org.owasp.dependencycheck from 7.1.0.1 to 7.1.1 ([#63](https://github.com/vitorsalgado/puma4j/issues/63)) ([cc5b052](https://github.com/vitorsalgado/puma4j/commit/cc5b052bf9f40bc5db8a3768dfc4722661d0de19))
+* **deps:** bump org.sonarqube from 3.3 to 3.4.0.2513 ([#62](https://github.com/vitorsalgado/puma4j/issues/62)) ([2249526](https://github.com/vitorsalgado/puma4j/commit/224952658f71718e0bfaa11922b484672af9e495))
+* **deps:** bump versions.jackson from 2.13.2 to 2.13.3 ([#54](https://github.com/vitorsalgado/puma4j/issues/54)) ([f5b8398](https://github.com/vitorsalgado/puma4j/commit/f5b839854d4c3b88615d6b9182700e50bfcd8d7a))
+
 ## [4.0.0](https://github.com/vitorsalgado/puma4j/compare/v3.0.2...v4.0.0) (2022-05-02)
 
 
