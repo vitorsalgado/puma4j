@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.2](https://github.com/vitorsalgado/puma4j/compare/v4.0.1...v4.0.2) (2022-08-24)
+
+
+### Build
+
+* **deps:** bump actions/setup-node from 3.3.0 to 3.4.0 ([#65](https://github.com/vitorsalgado/puma4j/issues/65)) ([44ce411](https://github.com/vitorsalgado/puma4j/commit/44ce41179ab07e7b8ada5ab1c9023a77c60108c5))
+* **deps:** bump actions/setup-node from 3.4.0 to 3.4.1 ([#66](https://github.com/vitorsalgado/puma4j/issues/66)) ([ff8456b](https://github.com/vitorsalgado/puma4j/commit/ff8456be1bc84d1f99e722d34006d08251442d5b))
+* **deps:** bump fastify/github-action-merge-dependabot ([#69](https://github.com/vitorsalgado/puma4j/issues/69)) ([8b58486](https://github.com/vitorsalgado/puma4j/commit/8b584860a76987ce1d1b6f5392abce986f67815f))
+* **deps:** bump fastify/github-action-merge-dependabot ([#70](https://github.com/vitorsalgado/puma4j/issues/70)) ([346165b](https://github.com/vitorsalgado/puma4j/commit/346165b759060e7686bddebff01a04335d34cebb))
+* **deps:** bump fastify/github-action-merge-dependabot ([#72](https://github.com/vitorsalgado/puma4j/issues/72)) ([ebdf754](https://github.com/vitorsalgado/puma4j/commit/ebdf7546f77d0793232a8b3df841765fa6c30e42))
+* **deps:** bump gson from 2.9.0 to 2.9.1 ([#68](https://github.com/vitorsalgado/puma4j/issues/68)) ([60368fc](https://github.com/vitorsalgado/puma4j/commit/60368fce73f9dbf0eef16db57a4f2d60549f9ede))
+* **deps:** bump org.jetbrains.kotlin.jvm from 1.7.0 to 1.7.10 ([#64](https://github.com/vitorsalgado/puma4j/issues/64)) ([b5eef4d](https://github.com/vitorsalgado/puma4j/commit/b5eef4d1b0aaafcba8116aeeca63b56eebd4046e))
+* **deps:** bump org.owasp.dependencycheck from 7.1.1 to 7.1.2 ([#71](https://github.com/vitorsalgado/puma4j/issues/71)) ([5e368c9](https://github.com/vitorsalgado/puma4j/commit/5e368c996e06877c245405e8cc7717bcc21ada35))
+* **deps:** bump versions.junitJupiter from 5.8.2 to 5.9.0 ([#67](https://github.com/vitorsalgado/puma4j/issues/67)) ([e0c7f2f](https://github.com/vitorsalgado/puma4j/commit/e0c7f2ff81c7dd84f227469063691be6d4267b58))
+
 ### [4.0.1](https://github.com/vitorsalgado/puma4j/compare/v4.0.0...v4.0.1) (2022-06-29)
 
 
