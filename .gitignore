@@ -62,3 +62,4 @@ infer-out/
 # Project
 tools/google-java-format
 node_modules
+package-lock.json
