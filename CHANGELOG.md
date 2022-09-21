@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [4.0.3](https://github.com/vitorsalgado/puma4j/compare/v4.0.2...v4.0.3) (2022-09-21)
+
+
+### Build
+
+* **deps:** bump fastify/github-action-merge-dependabot ([#73](https://github.com/vitorsalgado/puma4j/issues/73)) ([43dc34b](https://github.com/vitorsalgado/puma4j/commit/43dc34bd22b95debf2bbf6126811dad19edd4062))
+* **deps:** bump fastify/github-action-merge-dependabot ([#74](https://github.com/vitorsalgado/puma4j/issues/74)) ([2500b02](https://github.com/vitorsalgado/puma4j/commit/2500b02d556582834ec6b6275ca646096b8c6c3a))
+* **deps:** bump fastify/github-action-merge-dependabot ([#77](https://github.com/vitorsalgado/puma4j/issues/77)) ([3c4f9c1](https://github.com/vitorsalgado/puma4j/commit/3c4f9c1a8cd9e14a02e34feeeac531af2aa8948e))
+* **deps:** bump jackson-databind from 2.13.3 to 2.13.4 ([#76](https://github.com/vitorsalgado/puma4j/issues/76)) ([8c44a89](https://github.com/vitorsalgado/puma4j/commit/8c44a89bf11a1cb88009608b5f46f4864f707b36))
+* **deps:** bump org.owasp.dependencycheck from 7.1.2 to 7.2.0 ([#78](https://github.com/vitorsalgado/puma4j/issues/78)) ([baf8b20](https://github.com/vitorsalgado/puma4j/commit/baf8b20e9ca3baf9a045da9b04206e21244b0ec5))
+* **deps:** bump org.owasp.dependencycheck from 7.2.0 to 7.2.1 ([#80](https://github.com/vitorsalgado/puma4j/issues/80)) ([1449827](https://github.com/vitorsalgado/puma4j/commit/1449827ae352e749d6f638e10d193f08d4e7d758))
+* **deps:** bump versions.jackson from 2.13.3 to 2.13.4 ([#75](https://github.com/vitorsalgado/puma4j/issues/75)) ([6da21bf](https://github.com/vitorsalgado/puma4j/commit/6da21bfb0e1c133ca642cd90ab7fdf0619f9946b))
+* **deps:** bump versions.junitJupiter from 5.9.0 to 5.9.1 ([#79](https://github.com/vitorsalgado/puma4j/issues/79)) ([77072f1](https://github.com/vitorsalgado/puma4j/commit/77072f1f878e266b9d935de9a166305b66ba3731))
+
+
+### Docs
+
+* small readme improvements ([fc50299](https://github.com/vitorsalgado/puma4j/commit/fc502999236a1a5c5e2f4b55bd1e587190c8546e))
+
 ### [4.0.2](https://github.com/vitorsalgado/puma4j/compare/v4.0.1...v4.0.2) (2022-08-24)
 
 

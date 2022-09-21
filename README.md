@@ -14,7 +14,7 @@
     <img src="https://codecov.io/gh/vitorsalgado/puma4j/branch/main/graph/badge.svg?token=EFC2SD81AV" alt="Codecov Badge"/>
   </a>
   <a href="https://conventionalcommits.org">
-    <img src="https://img.shields.io/badge/Conventional%20Commits-4.0.2-yellow.svg" alt="Conventional Commits"/>
+    <img src="https://img.shields.io/badge/Conventional%20Commits-4.0.3-yellow.svg" alt="Conventional Commits"/>
   </a>
   <a href="https://sonarcloud.io/project/overview?id=vitorsalgado_puma4j">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=vitorsalgado_puma4j&metric=alert_status" alt="Sonar Quality Gate Status"/>
@@ -35,7 +35,7 @@ Puma4j provides a convenient and easier way to load and parse file resources in 
 Using Gradle:
 
 ```gradle
-testImplementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:4.0.2"
+testImplementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:4.0.3"
 ```
 
 or Maven:
@@ -44,7 +44,7 @@ or Maven:
 <dependency>
   <groupId>io.github.vitorsalgado.puma4j</groupId>
   <artifactId>puma4j-junit5-extension</artifactId>
-  <version>4.0.2</version>
+  <version>4.0.3</version>
   <scope>test</scope>
 </dependency>
 ```
@@ -130,7 +130,7 @@ private val simpleModel: SimpleModel by res("simple.json")
 To use the delegate `res`, add the library below to your project:
 
 ```gradle
-testImplementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:4.0.2"
+testImplementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:4.0.3"
 ```
 
 ---
