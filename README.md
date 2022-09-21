@@ -28,19 +28,19 @@
 
 Puma4j provides a convenient and easier way to load and parse file resources in your **JUnit 5** tests using just a couple of **annotations** :)
 
-## Download
+## Installation 
 
-![Java 8](docs/assets/java.svg)
+![Java 8](https://img.shields.io/badge/java-8-yellow)
 
 Using Gradle:
 
-```
+```gradle
 testImplementation "io.github.vitorsalgado.puma4j:puma4j-junit5-extension:4.0.2"
 ```
 
 or Maven:
 
-```
+```xml
 <dependency>
   <groupId>io.github.vitorsalgado.puma4j</groupId>
   <artifactId>puma4j-junit5-extension</artifactId>
@@ -68,7 +68,7 @@ First, annotate your JUnit 5 test classes with `@UsePuma4j`. Now you can use the
 to inject resources on class fields and/or method parameters.  
 Take a look on the complete example below:
 
-```
+```java
 @UsePuma4j
 class UsageWithJUnit5 {
 
@@ -123,13 +123,13 @@ Then, use the annotation `@Use(YourCustomUnmarshaller.class)` on the class, fiel
 
 You can load resources using a Kotlin delegate also. Look the example below:
 
-```
+```kotlin
 private val simpleModel: SimpleModel by res("simple.json")
 ```
 
 To use the delegate `res`, add the library below to your project:
 
-```
+```gradle
 testImplementation "io.github.vitorsalgado.puma4j:puma4j-kotlin:4.0.2"
 ```
 
@@ -141,7 +141,7 @@ See [CONTRIBUTING](CONTRIBUTING.md) for more details.
 
 ## Contributors
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Thanks goes to these wonderful people ✨:
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
