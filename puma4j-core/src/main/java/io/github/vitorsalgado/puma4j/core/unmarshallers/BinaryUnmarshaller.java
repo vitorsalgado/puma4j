@@ -12,15 +12,12 @@ public class BinaryUnmarshaller implements Unmarshaller<byte[]> {
   public byte[] unmarshal(final Args args) throws IOException {
     requireNonNull(args);
 
-    final ByteArrayOutputStream buffer = new ByteArrayOutputStream();
-    int reading;
-    final byte[] data = new byte[args
-        .getInput()
-        .available()];
+    final int size = args.getInput().available();
+    final ByteArrayOutputStream buffer = new ByteArrayOutputStream(size);
+    final byte[] data = new byte[size];
 
-    while ((reading = args
-        .getInput()
-        .read(data, 0, data.length)) != -1) {
+    int reading;
+    while ((reading = args.getInput().read(data, 0, data.length)) != -1) {
       buffer.write(data, 0, reading);
     }
 

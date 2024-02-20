@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 
 import io.github.vitorsalgado.puma4j.core.Unmarshaller;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertiesUnmarshaller implements Unmarshaller<Properties> {
@@ -12,8 +13,10 @@ public class PropertiesUnmarshaller implements Unmarshaller<Properties> {
   public Properties unmarshal(final Args args) throws IOException {
     requireNonNull(args);
 
-    final Properties properties = new Properties();
-    properties.load(args.getInput());
+    final InputStream in = args.getInput();
+    final Properties properties = new Properties(in.available());
+
+    properties.load(in);
 
     return properties;
   }

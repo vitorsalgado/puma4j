@@ -19,8 +19,6 @@ public class YamlUnmarshaller implements Unmarshaller<Object> {
     requireNonNull(args);
 
     return objectMapper.readValue(
-        args.getInput(), objectMapper
-            .getTypeFactory()
-            .constructType(args.getType()));
+        args.getInput(), objectMapper.getTypeFactory().constructType(args.getType()));
   }
 }
