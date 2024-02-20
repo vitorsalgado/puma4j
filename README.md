@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://github.com/vitorsalgado/puma4j/actions/workflows/ci.yml">
-    <img src="https://github.com/vitorsalgado/puma4j/actions/workflows/ci.yml/badge.svg" alt="GitHub Action Status" />
+    <img src="https://github.com/vitorsalgado/puma4j/actions/workflows/ci.yml/badge.svg?branch=main" alt="GitHub Action Status" />
   </a>
   <a href="https://codecov.io/gh/vitorsalgado/puma4j">
     <img src="https://codecov.io/gh/vitorsalgado/puma4j/branch/main/graph/badge.svg?token=EFC2SD81AV" alt="Codecov Badge"/>
