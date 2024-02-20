@@ -30,13 +30,6 @@ jobs:
           distribution: 'adopt'
           cache: gradle
 
-      - name: Cache SonarCloud Packages
-        uses: actions/cache@v3
-        with:
-          path: ~/.sonar/cache
-          key: ${{ runner.os }}-sonar
-          restore-keys: ${{ runner.os }}-sonar
-
       - name: Cache Gradle Packages
         uses: actions/cache@v3
         with:
@@ -48,14 +41,6 @@ jobs:
         run: |
           ./gradlew build
           ./gradlew jacocoRootTestReport
-
-      - name: Sonar
-        if: github.ref == 'refs/heads/main'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: |
-          ./gradlew sonarqube --info
 
       - name: Coverage
         if: github.ref == 'refs/heads/main'
