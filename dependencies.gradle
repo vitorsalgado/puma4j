@@ -10,7 +10,7 @@ LinkedHashMap<Object, String> libs = [:]
 
 // Lib Versions
 // --
-versions.junitJupiter = "5.9.2"
+versions.junitJupiter = "5.11.3"
 versions.jackson = "2.18.0"
 versions.jacksonDatabind = "2.14.2"
 versions.gson = "2.10.1"
