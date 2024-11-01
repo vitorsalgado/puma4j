@@ -13,7 +13,7 @@ LinkedHashMap<Object, String> libs = [:]
 versions.junitJupiter = "5.9.2"
 versions.jackson = "2.18.0"
 versions.jacksonDatabind = "2.18.1"
-versions.gson = "2.10.1"
+versions.gson = "2.11.0"
 
 // Dependencies
 // --
